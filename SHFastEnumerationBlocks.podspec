@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  name           = "SHPopoverControllerBlocks"
+  name           = "SHFastEnumerationBlocks"
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
   s.name         = name
@@ -7,15 +7,9 @@ Pod::Spec.new do |s|
   source_files   = "#{name}/**/*.{h,m}"
 
   s.version      = version
-  s.summary      = "Blocks for SHPopoverControllerBlocks shouldDismiss and didDismiss - swizzle free!"
+  s.summary      = "Blocks for NSFastEnumeration"
   s.description  = <<-DESC
-
-                    * Swizzle and junk free
-                    * No need to clean up after - The blocks are self maintained.
-                    * SHPopoverControllerBlocks is referenced in a map with weak properties
-                    * Prefixed selectors.
-                    * Minimum clutter on top of the public interface.
-                    
+  --------------------------------
                     DESC
 
   s.homepage     = url
@@ -25,7 +19,9 @@ Pod::Spec.new do |s|
   s.source       = { :git => git_url, :tag => version}
   
   
-  s.platform  = :ios, "6.0"
+  #s.platform  = :ios, "6.0"
+  s.ios.deployment_target = "6.0"
+  s.osx.deployment_target = "10.8"
 
   s.source_files = source_files
   s.requires_arc = true
