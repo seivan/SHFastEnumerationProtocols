@@ -10,29 +10,21 @@
 		04A2C76AAB444A2487B5442A /* NSArray+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = A3C2903B02C040BFA0673964 /* NSArray+SHFastEnumerationBlocks.h */; };
 		10D7BD58DC0843C299C7F82E /* NSSet+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 297BA8A38504441FBEEF8C7E /* NSSet+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		1533ECC0C4774581B61CEBE1 /* NSDictionary+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 066149E158084065AB762401 /* NSDictionary+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		174A443D41B644AB983D15BD /* NSMutableOrderedSet+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 412C7537D0824C6C8C2D8928 /* NSMutableOrderedSet+SHFastEnumerationBlocks.h */; };
 		2DB9A173AAA04018BDAD0F88 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 564E900B46A746C8A3396F6E /* Cocoa.framework */; };
-		2F81B3AAEE6D4F9B8E6120AF /* NSMutableDictionary+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = E57DFC9C318C449AAD540CC7 /* NSMutableDictionary+SHFastEnumerationBlocks.h */; };
-		35BCE75517D74EB8BC64DF84 /* NSMutableSet+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 564E8CB05198488E8AF84C5A /* NSMutableSet+SHFastEnumerationBlocks.h */; };
 		3FF5CC43F8BB42A1908BAC98 /* NSOrderedSet+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CFF38B020BA4DEB9A9EAE15 /* NSOrderedSet+SHFastEnumerationBlocks.h */; };
 		49AACBB3CDC548B69C7266B8 /* libPods-SHFastEnumerationBlocks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD85A25AA254E6BBBA30C16 /* libPods-SHFastEnumerationBlocks.a */; };
 		4A5EE26FE71E45DD9E6D89A8 /* NSArray+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 7580A27DB54F45569F0A883C /* NSArray+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		572008236EF5474ABBC73568 /* NSHashTable+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D3E18F0F9964CC3B40D0715 /* NSHashTable+SHFastEnumerationBlocks.h */; };
 		5860A3B34CDD4D578C020BFA /* NSHashTable+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59866DAAB14D65AA8D4096 /* NSHashTable+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6668EA19AB524F4BB8B4AC21 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE51DE4DBA4C9EB11B54AE /* Pods-dummy.m */; };
-		877EDEC7C3EC448E83500C68 /* NSMutableArray+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FEE92E570541C9B36A24FF /* NSMutableArray+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8CE8F34FB52145A0A26B92E4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 564E900B46A746C8A3396F6E /* Cocoa.framework */; };
-		8E1F812F99784397B91CA2F5 /* NSMutableOrderedSet+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B131EC7E8704B149735DFE1 /* NSMutableOrderedSet+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		96BC34AE0D444972A01C4F67 /* NSMutableDictionary+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 15115A1D8B624351A1DDA23D /* NSMutableDictionary+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9E8C5CE9643049EE9FDD32A7 /* NSDictionary+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C2742149BCC47F0B5DD7BEC /* NSDictionary+SHFastEnumerationBlocks.h */; };
 		9FA890B14F294B55BA44F4EE /* NSMapTable+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8665F18C84432088469B23 /* NSMapTable+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		B452B51722B0498C8B5ABDDD /* SHFastEnumeration.h in Headers */ = {isa = PBXBuildFile; fileRef = 6759E94856A9447296C2A250 /* SHFastEnumeration.h */; };
 		C3840103D0444A61A3EFA783 /* NSSet+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 4234DB59071444D1B3D86CE4 /* NSSet+SHFastEnumerationBlocks.h */; };
 		C97E7224BAAF4E1AB87705FA /* NSMapTable+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24CCDB9B0E402C94579357 /* NSMapTable+SHFastEnumerationBlocks.h */; };
 		CAC6AA327F394484974F2CAE /* NSOrderedSet+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C5E64FAA9D4BEA9365D4F4 /* NSOrderedSet+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		CBB8EF57CA3042AE8886631D /* NSMutableSet+SHFastEnumerationBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = EC888C709EC54FB28EF5535A /* NSMutableSet+SHFastEnumerationBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D10DED0552B54EAF881C8544 /* SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E2FEDEE38E846A8A8213F6A /* SHFastEnumerationBlocks.h */; };
-		E0E9140D17A449D995359580 /* NSMutableArray+SHFastEnumerationBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = D7C24EBA32304334ADAA106E /* NSMutableArray+SHFastEnumerationBlocks.h */; };
 		F222BB0838E84271A4ECA59D /* Pods-SHFastEnumerationBlocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 637EAF63C67D493A9BFA0233 /* Pods-SHFastEnumerationBlocks-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -50,16 +42,12 @@
 		015F9BB6B8EB444C891E597C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		04A3CB7F18F2424CAFD426FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		066149E158084065AB762401 /* NSDictionary+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSDictionary+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
-		15115A1D8B624351A1DDA23D /* NSMutableDictionary+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSMutableDictionary+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
 		1F59866DAAB14D65AA8D4096 /* NSHashTable+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSHashTable+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSHashTable+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
 		297BA8A38504441FBEEF8C7E /* NSSet+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSSet+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSSet+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
 		2C2742149BCC47F0B5DD7BEC /* NSDictionary+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSDictionary+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
 		2CFF38B020BA4DEB9A9EAE15 /* NSOrderedSet+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSOrderedSet+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSOrderedSet+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
-		412C7537D0824C6C8C2D8928 /* NSMutableOrderedSet+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableOrderedSet+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSMutableOrderedSet+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
 		4234DB59071444D1B3D86CE4 /* NSSet+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSSet+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSSet+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
 		4BAACA0EBAA749DB8C0B6A53 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = SOURCE_ROOT; };
-		55FEE92E570541C9B36A24FF /* NSMutableArray+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSMutableArray+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
-		564E8CB05198488E8AF84C5A /* NSMutableSet+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableSet+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSMutableSet+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
 		564E900B46A746C8A3396F6E /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		5A8665F18C84432088469B23 /* NSMapTable+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMapTable+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSMapTable+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
 		61BA5F9E3CDF4900BCCE3CD5 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
@@ -68,7 +56,6 @@
 		71DB5E7705AE47CA93BA2AE3 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7580A27DB54F45569F0A883C /* NSArray+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSArray+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
 		7D3E18F0F9964CC3B40D0715 /* NSHashTable+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSHashTable+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSHashTable+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
-		8B131EC7E8704B149735DFE1 /* NSMutableOrderedSet+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableOrderedSet+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSMutableOrderedSet+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
 		8DB3B57F179E45B5A0254834 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = SOURCE_ROOT; };
 		8EAE51DE4DBA4C9EB11B54AE /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = SOURCE_ROOT; };
 		90230F36787D4B2C835A18A2 /* Pods-SHFastEnumerationBlocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SHFastEnumerationBlocks-prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -79,10 +66,7 @@
 		AAD85A25AA254E6BBBA30C16 /* libPods-SHFastEnumerationBlocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SHFastEnumerationBlocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F80C96DCE440AD9E4B8F45 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = SOURCE_ROOT; };
 		D3C5E64FAA9D4BEA9365D4F4 /* NSOrderedSet+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSOrderedSet+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSOrderedSet+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
-		D7C24EBA32304334ADAA106E /* NSMutableArray+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSMutableArray+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
-		E57DFC9C318C449AAD540CC7 /* NSMutableDictionary+SHFastEnumerationBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableDictionary+SHFastEnumerationBlocks.h"; path = "../../SHFastEnumerationBlocks/NSMutableDictionary+SHFastEnumerationBlocks.h"; sourceTree = SOURCE_ROOT; };
 		E60E77C952FD46F4B8352070 /* Pods-SHFastEnumerationBlocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHFastEnumerationBlocks.xcconfig"; sourceTree = SOURCE_ROOT; };
-		EC888C709EC54FB28EF5535A /* NSMutableSet+SHFastEnumerationBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableSet+SHFastEnumerationBlocks.m"; path = "../../SHFastEnumerationBlocks/NSMutableSet+SHFastEnumerationBlocks.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,20 +114,12 @@
 			children = (
 				A3C2903B02C040BFA0673964 /* NSArray+SHFastEnumerationBlocks.h */,
 				7580A27DB54F45569F0A883C /* NSArray+SHFastEnumerationBlocks.m */,
-				D7C24EBA32304334ADAA106E /* NSMutableArray+SHFastEnumerationBlocks.h */,
-				55FEE92E570541C9B36A24FF /* NSMutableArray+SHFastEnumerationBlocks.m */,
 				2C2742149BCC47F0B5DD7BEC /* NSDictionary+SHFastEnumerationBlocks.h */,
 				066149E158084065AB762401 /* NSDictionary+SHFastEnumerationBlocks.m */,
 				7D3E18F0F9964CC3B40D0715 /* NSHashTable+SHFastEnumerationBlocks.h */,
 				1F59866DAAB14D65AA8D4096 /* NSHashTable+SHFastEnumerationBlocks.m */,
 				9F24CCDB9B0E402C94579357 /* NSMapTable+SHFastEnumerationBlocks.h */,
 				5A8665F18C84432088469B23 /* NSMapTable+SHFastEnumerationBlocks.m */,
-				E57DFC9C318C449AAD540CC7 /* NSMutableDictionary+SHFastEnumerationBlocks.h */,
-				15115A1D8B624351A1DDA23D /* NSMutableDictionary+SHFastEnumerationBlocks.m */,
-				412C7537D0824C6C8C2D8928 /* NSMutableOrderedSet+SHFastEnumerationBlocks.h */,
-				8B131EC7E8704B149735DFE1 /* NSMutableOrderedSet+SHFastEnumerationBlocks.m */,
-				564E8CB05198488E8AF84C5A /* NSMutableSet+SHFastEnumerationBlocks.h */,
-				EC888C709EC54FB28EF5535A /* NSMutableSet+SHFastEnumerationBlocks.m */,
 				2CFF38B020BA4DEB9A9EAE15 /* NSOrderedSet+SHFastEnumerationBlocks.h */,
 				D3C5E64FAA9D4BEA9365D4F4 /* NSOrderedSet+SHFastEnumerationBlocks.m */,
 				4234DB59071444D1B3D86CE4 /* NSSet+SHFastEnumerationBlocks.h */,
@@ -215,10 +191,6 @@
 				9E8C5CE9643049EE9FDD32A7 /* NSDictionary+SHFastEnumerationBlocks.h in Headers */,
 				572008236EF5474ABBC73568 /* NSHashTable+SHFastEnumerationBlocks.h in Headers */,
 				C97E7224BAAF4E1AB87705FA /* NSMapTable+SHFastEnumerationBlocks.h in Headers */,
-				E0E9140D17A449D995359580 /* NSMutableArray+SHFastEnumerationBlocks.h in Headers */,
-				2F81B3AAEE6D4F9B8E6120AF /* NSMutableDictionary+SHFastEnumerationBlocks.h in Headers */,
-				174A443D41B644AB983D15BD /* NSMutableOrderedSet+SHFastEnumerationBlocks.h in Headers */,
-				35BCE75517D74EB8BC64DF84 /* NSMutableSet+SHFastEnumerationBlocks.h in Headers */,
 				3FF5CC43F8BB42A1908BAC98 /* NSOrderedSet+SHFastEnumerationBlocks.h in Headers */,
 				C3840103D0444A61A3EFA783 /* NSSet+SHFastEnumerationBlocks.h in Headers */,
 				B452B51722B0498C8B5ABDDD /* SHFastEnumeration.h in Headers */,
@@ -306,10 +278,6 @@
 				1533ECC0C4774581B61CEBE1 /* NSDictionary+SHFastEnumerationBlocks.m in Sources */,
 				5860A3B34CDD4D578C020BFA /* NSHashTable+SHFastEnumerationBlocks.m in Sources */,
 				9FA890B14F294B55BA44F4EE /* NSMapTable+SHFastEnumerationBlocks.m in Sources */,
-				877EDEC7C3EC448E83500C68 /* NSMutableArray+SHFastEnumerationBlocks.m in Sources */,
-				96BC34AE0D444972A01C4F67 /* NSMutableDictionary+SHFastEnumerationBlocks.m in Sources */,
-				8E1F812F99784397B91CA2F5 /* NSMutableOrderedSet+SHFastEnumerationBlocks.m in Sources */,
-				CBB8EF57CA3042AE8886631D /* NSMutableSet+SHFastEnumerationBlocks.m in Sources */,
 				CAC6AA327F394484974F2CAE /* NSOrderedSet+SHFastEnumerationBlocks.m in Sources */,
 				10D7BD58DC0843C299C7F82E /* NSSet+SHFastEnumerationBlocks.m in Sources */,
 				F222BB0838E84271A4ECA59D /* Pods-SHFastEnumerationBlocks-dummy.m in Sources */,

@@ -20,4 +20,8 @@
 -(void)testAll;
 -(void)testAny;
 -(void)testNone;
+-(void)testSelfMap;
+-(void)testSelfFindAll;
+-(void)testSelfReject;
 @end
+

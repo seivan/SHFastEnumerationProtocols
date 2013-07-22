@@ -11,13 +11,25 @@
 
 #import "NSArray+SHFastEnumerationBlocks.h"
 
+@interface NSArrayTests ()
+@property(nonatomic,strong) NSArray             * subject;
+@property(nonatomic,strong) NSMutableArray      * matching;
+
+@end
 
 @implementation NSArrayTests
 
 -(void)setUp; {
   [super setUp];
-  self.subject = @[ @"one", @"1", @"two",@"2", @"three", @"3", @"one", @"1"];
+  self.subject = @[ @"one", @"1", @"two",@"2", @"three", @"3", @"one", @"1"].mutableCopy;
   self.matching = @[].mutableCopy;
+}
+
+-(void)tearDown; {
+  [super tearDown];
+  
+  self.subject = nil;
+  self.matching = nil;
 }
 
 -(void)testEach;{
@@ -26,7 +38,7 @@
   }];
   
   STAssertEqualObjects(self.subject, self.matching, nil);
-
+  
 }
 
 -(void)testEachWithIndex;{
@@ -87,7 +99,7 @@
     STAssertTrue([self.subject containsObject:obj], nil);
     STAssertTrue(index % 2 == 0, nil);
   }
-
+  STAssertTrue(self.matching.count > 0, nil);
 
 }
 
@@ -96,12 +108,12 @@
     return [self.subject indexOfObject:obj] % 2 == 0 ;
   }].mutableCopy;
 
-  NSArray * matching = (NSArray * )self.matching;
-  if(matching.count == 1)
-    STAssertTrue([matching containsObject:@(1)], nil);
-  if(matching.count == 2)
-    STAssertTrue([matching containsObject:@(2)], nil);
-
+  for (id obj in self.matching) {
+    NSInteger index = [self.subject indexOfObject:obj];
+    STAssertTrue(index % 2 != 0, nil);
+  }
+  STAssertTrue(self.matching.count < self.subject.count, nil);
+  STAssertTrue(self.matching.count > 0, nil);
 }
 
 -(void)testAll;{
@@ -188,7 +200,58 @@
   STAssertTrue([matching containsObject:@(2)], nil);
 
   
+}
+
+-(void)testSelfMap; {
+  __block NSUInteger counter = 0;
+  self.matching = self.subject.mutableCopy;
+  [self.matching SH_selfMap:^id(id obj) {
+    counter +=1;
+    if(counter == 1)
+      return obj;
+    else
+      return nil;
+  }];
+  
+  
+  STAssertTrue(self.matching.count < self.subject.count, nil);
+  STAssertTrue(self.matching.count == 1, nil);
+  STAssertEqualObjects(self.matching[0], self.subject[0], nil);
+  
+
+}
+
+-(void)testSelfFindAll; {
+  self.matching = self.subject.mutableCopy;
+  
+  [self.matching SH_selfFindAll:^BOOL(id obj) {
+    return [self.matching indexOfObject:obj] % 2 == 0 ;
+  }];
+  
+  for (id obj in self.matching) {
+    NSInteger index = [self.subject indexOfObject:obj];
+    STAssertTrue(index % 2 == 0, nil);
+  }
+  STAssertTrue(self.matching.count < self.subject.count, nil);
+  STAssertTrue(self.matching.count > 0, nil);
   
 }
+
+-(void)testSelfReject; {
+  self.matching = self.subject.mutableCopy;
+  
+  [self.matching SH_selfReject:^BOOL(id obj) {
+    return [self.matching indexOfObject:obj] % 2 == 0 ;
+  }];
+  
+
+  for (id obj in self.matching) {
+    NSInteger index = [self.subject indexOfObject:obj];
+    STAssertTrue(index % 2 != 0, nil);
+  }
+  STAssertTrue(self.matching.count < self.subject.count, nil);
+  STAssertTrue(self.matching.count > 0, nil);
+}
+
 
 @end

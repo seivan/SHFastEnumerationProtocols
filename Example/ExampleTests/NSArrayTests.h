@@ -11,6 +11,4 @@
 
 @interface NSArrayTests : SenTestCase
 <SHEnumerationTests>
-@property(nonatomic,strong) NSArray        * subject;
-@property(nonatomic,strong) NSMutableArray * matching;
 @end

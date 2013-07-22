@@ -85,3 +85,18 @@
 }
 
 @end
+
+@implementation NSMutableArray (SHFastEnumerationExtendedBlocks)
+
+-(void)SH_selfMap:(SHIteratorReturnIdBlock)theBlock; {
+	[self setArray: [self SH_map:theBlock]];
+}
+-(void)SH_selfFindAll:(SHIteratorReturnTruthBlock)theBlock; {
+  [self setArray:[self SH_findAll:theBlock]];
+}
+-(void)SH_selfReject:(SHIteratorReturnTruthBlock)theBlock; {
+  [self setArray:[self SH_reject:theBlock]];
+}
+
+@end
+

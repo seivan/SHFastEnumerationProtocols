@@ -15,15 +15,18 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 -(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock;
 -(void)SH_concurrentEach:(SHIteratorBlock)theBlock;
 
--(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock;
--(instancetype)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock;
 
--(id)SH_find:(SHIteratorReturnTruthBlock)theBlock;
--(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock;
--(instancetype)SH_reject:(SHIteratorReturnTruthBlock)theBlock;
+-(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; //Collect
+-(instancetype)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; //Inject/FoldLeft
 
--(BOOL)SH_all:(SHIteratorReturnTruthBlock)theBlock;
--(BOOL)SH_any:(SHIteratorReturnTruthBlock)theBlock;
+
+-(id)SH_find:(SHIteratorReturnTruthBlock)theBlock; //Match
+-(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; //Select
+-(instancetype)SH_reject:(SHIteratorReturnTruthBlock)theBlock; //Filter
+
+
+-(BOOL)SH_all:(SHIteratorReturnTruthBlock)theBlock; //Every
+-(BOOL)SH_any:(SHIteratorReturnTruthBlock)theBlock; //Some
 -(BOOL)SH_none:(SHIteratorReturnTruthBlock)theBlock;
 
 
