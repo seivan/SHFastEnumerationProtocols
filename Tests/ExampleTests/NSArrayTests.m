@@ -7,19 +7,30 @@
 //
 
 
-
+#import "SHFastEnumerationTests.h"
 
 #import "NSArrayTests.h"
 
 #import "NSArray+SHFastEnumerationProtocols.h"
 
 @interface NSArrayTests ()
+<SHTestsFastEnumerationBlocks,
+SHTestsFastEnumerationOrderedBlocks,
+SHTestsFastEnumerationOrderedProperties,
+SHTestsFastEnumerationOrdered>
+
 @property(nonatomic,strong) NSArray             * subject;
 @property(nonatomic,strong) NSMutableArray      * matching;
 
 @end
 
+@interface NSArrayTests (Mutable)
+<SHTestsMutableFastEnumerationBlocks,
+SHTestsMutableFastEnumerationOrdered>
+@end
+
 @implementation NSArrayTests
+
 
 -(void)setUp; {
   [super setUp];
@@ -34,27 +45,13 @@
   self.matching = nil;
 }
 
+#pragma mark - <SHTestsFastEnumerationBlocks>
 -(void)testEach;{
   [self.subject SH_each:^(id obj) {
     [self.matching addObject:obj];
   }];
   
   STAssertEqualObjects(self.subject, self.matching, nil);
-  
-}
-
--(void)testEachWithIndex;{
-
-  [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
-    [self.matching addObject:@(index)];
-  }];
-
-  STAssertTrue(self.matching.count > 0, nil);
-  for (NSNumber * obj in self.matching)
-    STAssertNotNil(self.subject[obj.unsignedIntegerValue], nil);
-
-
-
   
 }
 
@@ -211,6 +208,62 @@
   
 }
 
+#pragma mark - <SHTestsFastEnumerationOrderedBlocks>
+-(void)testEachWithIndex;{
+  
+  [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
+    [self.matching addObject:@(index)];
+  }];
+  
+  STAssertTrue(self.matching.count > 0, nil);
+  for (NSNumber * obj in self.matching)
+    STAssertNotNil(self.subject[obj.unsignedIntegerValue], nil);
+  
+  
+  
+  
+}
+
+
+#pragma mark - <SHTestsFastEnumerationOrderedProperties>
+-(void)testFirstObject; {
+  self.matching = self.subject.mutableCopy;
+  
+  STAssertEqualObjects(self.matching.SH_firstObject,
+                       self.subject[0], nil);
+  
+  self.matching = @[].mutableCopy;
+  
+  STAssertNoThrow([self.matching SH_firstObject], nil);
+  STAssertNil(self.matching.SH_firstObject, nil);
+  
+}
+
+-(void)testLastObject; {
+  self.matching = self.subject.mutableCopy;
+  
+  STAssertEqualObjects(self.matching.SH_lastObject,
+                       self.subject.lastObject, nil);
+  
+  self.matching = @[].mutableCopy;
+  
+  STAssertNoThrow([self.matching SH_lastObject], nil);
+  STAssertNil(self.matching.SH_lastObject, nil);
+  
+  
+}
+
+#pragma mark - <SHTestsFastEnumerationOrdered>
+-(void)testReverse; {
+
+  self.matching = [self.subject SH_reverse].mutableCopy;
+  STAssertEqualObjects(self.subject.reverseObjectEnumerator.allObjects, self.matching, nil);
+  STAssertTrue(self.matching.count > 0, nil);
+
+  
+}
+
+#pragma mark - <SHTestsMutableFastEnumerationBlocks>
 -(void)testModifyMap; {
   __block NSUInteger counter = 0;
   self.matching = self.subject.mutableCopy;
@@ -263,6 +316,14 @@
   STAssertTrue(self.matching.count > 0, nil);
 }
 
+#pragma mark - <SHTestsMutableFastEnumerationOrdered>
+
+-(void)testModifyReverse; {
+  self.matching = self.subject.mutableCopy;
+  [self.matching SH_modifyReverse];
+  STAssertEqualObjects(self.subject.reverseObjectEnumerator.allObjects, self.matching, nil);
+  STAssertTrue(self.matching.count > 0, nil);
+}
 
 -(void)testPopObjectAtIndex; {
   self.matching = self.subject.mutableCopy;
@@ -314,31 +375,5 @@
 }
 
 
--(void)testFirstObject; {
-  self.matching = self.subject.mutableCopy;
-  
-  STAssertEqualObjects(self.matching.SH_firstObject,
-                       self.subject[0], nil);
-
-  self.matching = @[].mutableCopy;
-  
-  STAssertNoThrow([self.matching SH_firstObject], nil);
-  STAssertNil(self.matching.SH_firstObject, nil);
-
-}
-
--(void)testLastObject; {
-  self.matching = self.subject.mutableCopy;
-  
-  STAssertEqualObjects(self.matching.SH_lastObject,
-                       self.subject.lastObject, nil);
-  
-  self.matching = @[].mutableCopy;
-  
-  STAssertNoThrow([self.matching SH_lastObject], nil);
-  STAssertNil(self.matching.SH_lastObject, nil);
-
-  
-}
 
 @end

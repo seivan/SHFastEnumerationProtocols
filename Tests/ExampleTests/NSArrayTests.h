@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Seivan Heidari. All rights reserved.
 //
 
+#import <SenTestingKit/SenTestingKit.h>
 
-#import "SHEnumerationTests.h"
+
 
 @interface NSArrayTests : SenTestCase
-<SHEnumerationTests>
+
 @end

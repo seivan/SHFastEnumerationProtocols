@@ -12,6 +12,7 @@
 @dynamic SH_firstObject;
 @dynamic SH_lastObject;
 
+#pragma mark - <SHFastEnumerationBlocks>
 -(void)SH_each:(SHIteratorBlock)theBlock; { NSParameterAssert(theBlock);
 
   for (id obj in self) {
@@ -19,12 +20,6 @@
   }
 }
 
--(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock; { NSParameterAssert(theBlock);
-
-  [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *_) {
-    theBlock(obj,idx);
-  }];
-}
 
 -(void)SH_concurrentEach:(SHIteratorBlock)theBlock; { NSParameterAssert(theBlock);
 
@@ -87,9 +82,20 @@
 }
 
 -(BOOL)SH_none:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  return [self SH_find:theBlock] == nil;
+  return [self SH_all:theBlock] == NO;
 }
 
+#pragma mark - <SHFastEnumerationOrderedBlocks>
+
+-(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock; { NSParameterAssert(theBlock);
+  
+  [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *_) {
+    theBlock(obj,idx);
+  }];
+}
+
+
+#pragma mark - <SHFastEnumerationOrderedProperties>
 -(id)SH_firstObject; {
   id obj = nil;
   if(self.count > 0) obj = [self objectAtIndex:0];
@@ -100,11 +106,17 @@
   return self.lastObject;
 }
 
+#pragma mark - <SHFastEnumerationOrdered>
+-(instancetype)SH_reverse; {
+  return self.reverseObjectEnumerator.allObjects;
+}
 
 @end
 
 @implementation NSMutableArray (SHFastEnumerationProtocols)
 
+
+#pragma mark - <SHMutableFastEnumerationBlocks>
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
 	[self setArray: [self SH_map:theBlock]];
 }
@@ -116,6 +128,13 @@
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
   [self setArray:[self SH_reject:theBlock]];
 }
+
+#pragma mark - <SHMutableFastEnumerationOrdered>
+
+-(void)SH_modifyReverse; {
+  return [self setArray:self.reverseObjectEnumerator.allObjects];
+}
+
 
 -(id)SH_popObjectAtIndex:(NSUInteger)theIndex; {
   id obj = [self objectAtIndex:theIndex];
