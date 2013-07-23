@@ -47,29 +47,38 @@
     [self.matching addObject:@(index)];
   }];
 
-  for (NSNumber * obj in self.matching) {
+  STAssertTrue(self.matching.count > 0, nil);
+  for (NSNumber * obj in self.matching)
     STAssertNotNil(self.subject[obj.unsignedIntegerValue], nil);
-  }
+
+
 
   
 }
 
 -(void)testMap;{
-  self.matching = self.subject.mutableCopy;
-  [self.matching removeLastObject];
   
-  self.subject = [self.subject SH_map:^id(id obj) {
+  __block NSInteger skipOne = -1;
+  self.matching = [self.subject SH_map:^id(id obj) {
+    skipOne += 1;
+    if(skipOne == 0)
+      return nil;
+    else
       return obj;
-  }];
+  }].mutableCopy;
+  
   NSMutableArray * modifySubject =  self.subject.mutableCopy;
-  [modifySubject removeLastObject];
+  [modifySubject removeObjectAtIndex:0];
   self.subject = modifySubject;
+
   STAssertEqualObjects(self.subject, self.matching, nil);
+  
 }
 
 -(void)testReduce;{
-  self.matching = [self.subject SH_reduceValue:@[].mutableCopy withBlock:^id(id memo, id obj) {
-    [(NSMutableArray*)memo addObject:obj];
+  self.matching = [self.subject SH_reduceValue:@[].mutableCopy
+                                     withBlock:^id(NSMutableArray * memo, id obj) {
+    [memo addObject:obj];
     return memo;
   }].mutableCopy;
 
@@ -78,7 +87,6 @@
 
 -(void)testFind;{
   NSUInteger index = self.subject.count/2;
-//  self.matching = self.subject[index];
   
   id value = [self.subject SH_find:^BOOL(id obj) {
     return [self.subject indexOfObject:obj] == index;
@@ -202,10 +210,10 @@
   
 }
 
--(void)testSelfMap; {
+-(void)testModifyMap; {
   __block NSUInteger counter = 0;
   self.matching = self.subject.mutableCopy;
-  [self.matching SH_selfMap:^id(id obj) {
+  [self.matching SH_modifyMap:^id(id obj) {
     counter +=1;
     if(counter == 1)
       return obj;
@@ -221,10 +229,10 @@
 
 }
 
--(void)testSelfFindAll; {
+-(void)testModifyFindAll; {
   self.matching = self.subject.mutableCopy;
   
-  [self.matching SH_selfFindAll:^BOOL(id obj) {
+  [self.matching SH_modifyFindAll:^BOOL(id obj) {
     return [self.matching indexOfObject:obj] % 2 == 0 ;
   }];
   
@@ -237,11 +245,11 @@
   
 }
 
--(void)testSelfReject; {
+-(void)testModifyReject; {
 
   self.matching = self.subject.mutableCopy;
   
-  [self.matching SH_selfReject:^BOOL(id obj) {
+  [self.matching SH_modifyReject:^BOOL(id obj) {
     return [self.matching indexOfObject:obj] % 2 == 0 ;
   }];
   
@@ -254,5 +262,56 @@
   STAssertTrue(self.matching.count > 0, nil);
 }
 
+
+-(void)testPopObjectAtIndex; {
+  self.matching = self.subject.mutableCopy;
+  id obj = [self.matching SH_popObjectAtIndex:self.matching.count/2];
+  
+  STAssertEqualObjects(obj,
+                       self.subject[self.subject.count/2], nil);
+
+  STAssertTrue(self.matching.count == self.subject.count-1 , nil);
+}
+
+-(void)testPopFirstObject; {
+  self.matching = self.subject.mutableCopy;
+  id obj = [self.matching SH_popFirstObject];
+
+  STAssertNotNil(obj, nil);
+  STAssertEqualObjects(obj,
+                       self.subject.SH_firstObject, nil);
+  
+  STAssertTrue(self.matching.count == self.subject.count-1 , nil);
+
+}
+
+-(void)testPopLastObject; {
+  self.matching = self.subject.mutableCopy;
+  id obj = [self.matching SH_popLastObject];
+  
+  STAssertEqualObjects(obj,
+                       self.subject.SH_lastObject, nil);
+  
+  STAssertTrue(self.matching.count == self.subject.count-1 , nil);
+  
+}
+
+
+-(void)testFirstObject; {
+  self.matching = self.subject.mutableCopy;
+  
+  STAssertEqualObjects(self.matching.SH_firstObject,
+                       self.subject[0], nil);
+
+  
+}
+
+-(void)testLastObject; {
+  self.matching = self.subject.mutableCopy;
+  
+  STAssertEqualObjects(self.matching.SH_lastObject,
+                       self.subject.lastObject, nil);
+  
+}
 
 @end

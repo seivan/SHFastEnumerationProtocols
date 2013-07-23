@@ -29,14 +29,26 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 -(BOOL)SH_any:(SHIteratorReturnTruthBlock)theBlock; //Some
 -(BOOL)SH_none:(SHIteratorReturnTruthBlock)theBlock;
 
-
 @end
+
+@protocol SHFastEnumerationProperties <NSObject>
+@property(nonatomic,readonly) id SH_firstObject;
+@property(nonatomic,readonly) id SH_lastObject;
+@end
+
 
 @protocol SHMutableFastEnumerationBlocks <NSObject>
 
--(void)SH_selfMap:(SHIteratorReturnIdBlock)theBlock;
--(void)SH_selfFindAll:(SHIteratorReturnTruthBlock)theBlock;
--(void)SH_selfReject:(SHIteratorReturnTruthBlock)theBlock;
+-(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock;
+-(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock;
+-(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock;
+
+-(id)SH_popObjectAtIndex:(NSUInteger)theIndex;
+-(id)SH_popFirstObject;
+-(id)SH_popLastObject;
 
 @end
+
+
+
 

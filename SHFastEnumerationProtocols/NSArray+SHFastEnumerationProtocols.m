@@ -8,7 +8,9 @@
 
 #import "NSArray+SHFastEnumerationProtocols.h"
 
-@implementation NSArray (SHFastEnumerationBlocks)
+@implementation NSArray (SHFastEnumerationProtocols)
+@dynamic SH_firstObject;
+@dynamic SH_lastObject;
 
 -(void)SH_each:(SHIteratorBlock)theBlock; { NSParameterAssert(theBlock);
 	
@@ -94,22 +96,57 @@
   return [self SH_find:theBlock] == nil;
 }
 
+-(id)SH_firstObject; {
+  id obj = nil;
+  if(self.count > 0) obj = [self objectAtIndex:0];
+  return obj;
+}
+
+-(id)SH_lastObject; {
+  return self.lastObject;
+}
+
+
 @end
 
 @implementation NSMutableArray (SHMutableFastEnumerationBlocks)
 
--(void)SH_selfMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
+-(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
   
 	[self setArray: [self SH_map:theBlock]];
 }
--(void)SH_selfFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
+-(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
   
   [self setArray:[self SH_findAll:theBlock]];
 }
--(void)SH_selfReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
+-(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
   
   [self setArray:[self SH_reject:theBlock]];
 }
+
+-(id)SH_popObjectAtIndex:(NSUInteger)theIndex; {
+  id obj = [self objectAtIndex:theIndex];
+  [self removeObjectAtIndex:theIndex];
+  return obj;
+}
+
+-(id)SH_popFirstObject; {
+  id obj = nil;
+  if(self.count > 0) obj = [self SH_popObjectAtIndex:0];
+  return obj;
+
+}
+
+-(id)SH_popLastObject; {
+  id obj = nil;
+  NSInteger lastIndex = self.count-1;
+  if(lastIndex >= 0) obj = [self SH_popObjectAtIndex:lastIndex];
+  return obj;
+}
+
+
+
+
 
 @end
 

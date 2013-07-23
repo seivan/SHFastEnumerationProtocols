@@ -20,8 +20,20 @@
 -(void)testAll;
 -(void)testAny;
 -(void)testNone;
--(void)testSelfMap;
--(void)testSelfFindAll;
--(void)testSelfReject;
+
+-(void)testModifyMap;
+-(void)testModifyFindAll;
+-(void)testModifyReject;
+
+-(void)testPopObjectAtIndex;
+-(void)testPopFirstObject;
+-(void)testPopLastObject;
+
+-(void)testFirstObject;
+-(void)testLastObject;
+
+
+
+
 @end
 
