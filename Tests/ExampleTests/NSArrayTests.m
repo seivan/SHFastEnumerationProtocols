@@ -7,6 +7,8 @@
 //
 
 
+
+
 #import "NSArrayTests.h"
 
 #import "NSArray+SHFastEnumerationProtocols.h"
@@ -57,7 +59,6 @@
 }
 
 -(void)testMap;{
-  
   __block NSInteger skipOne = -1;
   self.matching = [self.subject SH_map:^id(id obj) {
     skipOne += 1;
@@ -93,7 +94,7 @@
   }];
   [self.matching addObject:value];
 
-  STAssertEqualObjects(self.subject[self.subject.count/2], self.matching[0], nil);
+  STAssertEqualObjects(self.subject[index], self.matching[0], nil);
   
 }
 
@@ -271,6 +272,11 @@
                        self.subject[self.subject.count/2], nil);
 
   STAssertTrue(self.matching.count == self.subject.count-1 , nil);
+  
+  
+  STAssertThrowsSpecific([self.matching SH_popObjectAtIndex:NSNotFound],
+                         NSException,
+                         nil);
 }
 
 -(void)testPopFirstObject; {
@@ -282,6 +288,11 @@
                        self.subject.SH_firstObject, nil);
   
   STAssertTrue(self.matching.count == self.subject.count-1 , nil);
+  
+  self.matching = @[].mutableCopy;
+  
+  STAssertNoThrow([self.matching SH_popFirstObject], nil);
+  STAssertNil([self.matching SH_popFirstObject], nil);
 
 }
 
@@ -294,6 +305,12 @@
   
   STAssertTrue(self.matching.count == self.subject.count-1 , nil);
   
+  self.matching = @[].mutableCopy;
+  
+  STAssertNoThrow([self.matching SH_lastObject], nil);
+  STAssertNil([self.matching SH_lastObject], nil);
+
+  
 }
 
 
@@ -303,7 +320,11 @@
   STAssertEqualObjects(self.matching.SH_firstObject,
                        self.subject[0], nil);
 
+  self.matching = @[].mutableCopy;
   
+  STAssertNoThrow([self.matching SH_firstObject], nil);
+  STAssertNil(self.matching.SH_firstObject, nil);
+
 }
 
 -(void)testLastObject; {
@@ -311,6 +332,12 @@
   
   STAssertEqualObjects(self.matching.SH_lastObject,
                        self.subject.lastObject, nil);
+  
+  self.matching = @[].mutableCopy;
+  
+  STAssertNoThrow([self.matching SH_lastObject], nil);
+  STAssertNil(self.matching.SH_lastObject, nil);
+
   
 }
 
