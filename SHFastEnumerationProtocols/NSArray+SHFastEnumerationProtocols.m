@@ -103,7 +103,7 @@
 
 @end
 
-@implementation NSMutableArray (SHMutableFastEnumerationBlocks)
+@implementation NSMutableArray (SHFastEnumerationProtocols)
 
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
 	[self setArray: [self SH_map:theBlock]];

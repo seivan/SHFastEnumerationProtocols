@@ -12,7 +12,7 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 @protocol SHFastEnumerationBlocks <NSObject>
 
 -(void)SH_each:(SHIteratorBlock)theBlock;
--(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock;
+
 -(void)SH_concurrentEach:(SHIteratorBlock)theBlock;
 
 
@@ -31,7 +31,12 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 
 @end
 
-@protocol SHFastEnumerationProperties <NSObject>
+@protocol SHFastEnumerationOrderedBlocks <NSObject>
+-(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock;
+@end
+
+
+@protocol SHFastEnumerationOrderedProperties <NSObject>
 @property(nonatomic,readonly) id SH_firstObject;
 @property(nonatomic,readonly) id SH_lastObject;
 @end
@@ -42,6 +47,13 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock;
 -(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock;
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock;
+
+-(id)SH_popObjectAtIndex:(NSUInteger)theIndex;
+-(id)SH_popFirstObject;
+-(id)SH_popLastObject;
+
+@end
+@protocol SHMutableFastEnumerationOrderedBlocks <NSObject>
 
 -(id)SH_popObjectAtIndex:(NSUInteger)theIndex;
 -(id)SH_popFirstObject;
