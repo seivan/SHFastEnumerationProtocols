@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13B6A04FD5A94A7DAFE5B19D /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1F9D9760E945B682556BB5 /* Pods-dummy.m */; };
+		1DDD0A5B5CB34B2496F6ACBE /* SHFastEnumeration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CEC692812F44221A36638C3 /* SHFastEnumeration.h */; };
+		1F69109F2EC441C69FC22241 /* NSSet+SHFastEnumerationProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F30186D64E4B56AAD05502 /* NSSet+SHFastEnumerationProtocols.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		27AA0E8F6D7347F68317A97D /* NSArray+SHFastEnumerationProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D8FB501393480CB92036B1 /* NSArray+SHFastEnumerationProtocols.h */; };
+		37346CD1FD834F45928ECEC5 /* Pods-SHFastEnumerationProtocols-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068F902CCB4AACBE14D494 /* Pods-SHFastEnumerationProtocols-dummy.m */; };
+		3A06980EA8984FC19D166736 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648CB1CE53584D37ACB33C7C /* Cocoa.framework */; };
+		493486B1ADCF460C8C4858BC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648CB1CE53584D37ACB33C7C /* Cocoa.framework */; };
+		67FB0DAF95324CF9A74DE2B9 /* NSSet+SHFastEnumerationProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F17D7C51E426D8835FDE0 /* NSSet+SHFastEnumerationProtocols.h */; };
+		74C17D4F522B467E88C38AC2 /* NSMapTable+SHFastEnumerationProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E12AD1FCB146D5B6EF6E8E /* NSMapTable+SHFastEnumerationProtocols.h */; };
+		755D5725B66B4801B8C4906C /* NSOrderedSet+SHFastEnumerationProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B127180D94BDDA29E320F /* NSOrderedSet+SHFastEnumerationProtocols.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		8049FA7BB7BA428C88A3B8CB /* NSDictionary+SHFastEnumerationProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E7FB6A6A544108B7B0E589 /* NSDictionary+SHFastEnumerationProtocols.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A60A448CB7734CA99A5FA1B8 /* NSDictionary+SHFastEnumerationProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 25A13AB4577F42019C127C13 /* NSDictionary+SHFastEnumerationProtocols.h */; };
+		B0AC4C97068B4BD4AE503A43 /* SHFastEnumerationProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EACD532EFEE4B9ABE478AB3 /* SHFastEnumerationProtocols.h */; };
+		B916B93596AD4DBDA314B172 /* NSMapTable+SHFastEnumerationProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7D71498E7F40178E3513C5 /* NSMapTable+SHFastEnumerationProtocols.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		CA8B08A50F9C450391B85A4C /* NSArray+SHFastEnumerationProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C809B8EE2D4A64BA78817D /* NSArray+SHFastEnumerationProtocols.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D9445208B459494D8BEFBE00 /* libPods-SHFastEnumerationProtocols.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CAF7C397424926A3EC7DAC /* libPods-SHFastEnumerationProtocols.a */; };
+		DEB80BC28C9B4F65A5ACD5DE /* NSHashTable+SHFastEnumerationProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 25B7D45175B944C2B14BE3DD /* NSHashTable+SHFastEnumerationProtocols.h */; };
+		F55F5143517D415EA9ECE47A /* NSHashTable+SHFastEnumerationProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3B4A22C4E4230BDF2D07B /* NSHashTable+SHFastEnumerationProtocols.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		FFFD089A86DA498AA8942BBF /* NSOrderedSet+SHFastEnumerationProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D16448AF14F4143B1F66FBF /* NSOrderedSet+SHFastEnumerationProtocols.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D7D5D88BE7CE4BCF94A058F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C91218A31A9449F895C98469 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FF6F4C076A841F399090183;
+			remoteInfo = "Pods-SHFastEnumerationProtocols";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		032578FC99B84323A881DB06 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = SOURCE_ROOT; };
+		0CEC692812F44221A36638C3 /* SHFastEnumeration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHFastEnumeration.h; path = ../../SHFastEnumerationProtocols/SHFastEnumeration.h; sourceTree = SOURCE_ROOT; };
+		0D31F7B6D7544718B0D8DC47 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		25A13AB4577F42019C127C13 /* NSDictionary+SHFastEnumerationProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SHFastEnumerationProtocols.h"; path = "../../SHFastEnumerationProtocols/NSDictionary+SHFastEnumerationProtocols.h"; sourceTree = SOURCE_ROOT; };
+		25B7D45175B944C2B14BE3DD /* NSHashTable+SHFastEnumerationProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSHashTable+SHFastEnumerationProtocols.h"; path = "../../SHFastEnumerationProtocols/NSHashTable+SHFastEnumerationProtocols.h"; sourceTree = SOURCE_ROOT; };
+		2DA3B4A22C4E4230BDF2D07B /* NSHashTable+SHFastEnumerationProtocols.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSHashTable+SHFastEnumerationProtocols.m"; path = "../../SHFastEnumerationProtocols/NSHashTable+SHFastEnumerationProtocols.m"; sourceTree = SOURCE_ROOT; };
+		36E12AD1FCB146D5B6EF6E8E /* NSMapTable+SHFastEnumerationProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMapTable+SHFastEnumerationProtocols.h"; path = "../../SHFastEnumerationProtocols/NSMapTable+SHFastEnumerationProtocols.h"; sourceTree = SOURCE_ROOT; };
+		3EACD532EFEE4B9ABE478AB3 /* SHFastEnumerationProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHFastEnumerationProtocols.h; path = ../../SHFastEnumerationProtocols/SHFastEnumerationProtocols.h; sourceTree = SOURCE_ROOT; };
+		425F17D7C51E426D8835FDE0 /* NSSet+SHFastEnumerationProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSSet+SHFastEnumerationProtocols.h"; path = "../../SHFastEnumerationProtocols/NSSet+SHFastEnumerationProtocols.h"; sourceTree = SOURCE_ROOT; };
+		59CC89ECBF3641CDBE66AFA2 /* Pods-SHFastEnumerationProtocols-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHFastEnumerationProtocols-Private.xcconfig"; sourceTree = SOURCE_ROOT; };
+		5FED74E1AF014E07B7D0BA28 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		648CB1CE53584D37ACB33C7C /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		6F068F902CCB4AACBE14D494 /* Pods-SHFastEnumerationProtocols-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SHFastEnumerationProtocols-dummy.m"; sourceTree = SOURCE_ROOT; };
+		7D16448AF14F4143B1F66FBF /* NSOrderedSet+SHFastEnumerationProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSOrderedSet+SHFastEnumerationProtocols.h"; path = "../../SHFastEnumerationProtocols/NSOrderedSet+SHFastEnumerationProtocols.h"; sourceTree = SOURCE_ROOT; };
+		8B6B127180D94BDDA29E320F /* NSOrderedSet+SHFastEnumerationProtocols.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSOrderedSet+SHFastEnumerationProtocols.m"; path = "../../SHFastEnumerationProtocols/NSOrderedSet+SHFastEnumerationProtocols.m"; sourceTree = SOURCE_ROOT; };
+		91CAF7C397424926A3EC7DAC /* libPods-SHFastEnumerationProtocols.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SHFastEnumerationProtocols.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		92C809B8EE2D4A64BA78817D /* NSArray+SHFastEnumerationProtocols.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SHFastEnumerationProtocols.m"; path = "../../SHFastEnumerationProtocols/NSArray+SHFastEnumerationProtocols.m"; sourceTree = SOURCE_ROOT; };
+		96E7FB6A6A544108B7B0E589 /* NSDictionary+SHFastEnumerationProtocols.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+SHFastEnumerationProtocols.m"; path = "../../SHFastEnumerationProtocols/NSDictionary+SHFastEnumerationProtocols.m"; sourceTree = SOURCE_ROOT; };
+		A3F30186D64E4B56AAD05502 /* NSSet+SHFastEnumerationProtocols.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSSet+SHFastEnumerationProtocols.m"; path = "../../SHFastEnumerationProtocols/NSSet+SHFastEnumerationProtocols.m"; sourceTree = SOURCE_ROOT; };
+		A902A3664E3A4297B5FD9174 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = SOURCE_ROOT; };
+		AB088652582E45448359F64B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B65F1AFF48A44A22974A929D /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = SOURCE_ROOT; };
+		BA1F9D9760E945B682556BB5 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = SOURCE_ROOT; };
+		CD0FAC63288845999AF23561 /* Pods-SHFastEnumerationProtocols.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHFastEnumerationProtocols.xcconfig"; sourceTree = SOURCE_ROOT; };
+		D5D8FB501393480CB92036B1 /* NSArray+SHFastEnumerationProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+SHFastEnumerationProtocols.h"; path = "../../SHFastEnumerationProtocols/NSArray+SHFastEnumerationProtocols.h"; sourceTree = SOURCE_ROOT; };
+		D7774CFF5CCF45F79CA2E0A0 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		FB80E5A3FC5B4D1F92CC499B /* Pods-SHFastEnumerationProtocols-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SHFastEnumerationProtocols-prefix.pch"; sourceTree = SOURCE_ROOT; };
+		FE7D71498E7F40178E3513C5 /* NSMapTable+SHFastEnumerationProtocols.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMapTable+SHFastEnumerationProtocols.m"; path = "../../SHFastEnumerationProtocols/NSMapTable+SHFastEnumerationProtocols.m"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F065286E5D3484CAC166C41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493486B1ADCF460C8C4858BC /* Cocoa.framework in Frameworks */,
+				D9445208B459494D8BEFBE00 /* libPods-SHFastEnumerationProtocols.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		497566EBA32F4500868DF1B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A06980EA8984FC19D166736 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F625898B953494498BA0E44 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D277D4FB2CA64F63A62430F2 /* Pods-SHFastEnumerationProtocols */,
+				BC3CFADCAA5C4F149466FD7D /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		71DFE02565DE42FF83E1C2B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				648CB1CE53584D37ACB33C7C /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D4FD6EF6D80439CAF2626E5 /* SHFastEnumerationProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				D5D8FB501393480CB92036B1 /* NSArray+SHFastEnumerationProtocols.h */,
+				92C809B8EE2D4A64BA78817D /* NSArray+SHFastEnumerationProtocols.m */,
+				25A13AB4577F42019C127C13 /* NSDictionary+SHFastEnumerationProtocols.h */,
+				96E7FB6A6A544108B7B0E589 /* NSDictionary+SHFastEnumerationProtocols.m */,
+				25B7D45175B944C2B14BE3DD /* NSHashTable+SHFastEnumerationProtocols.h */,
+				2DA3B4A22C4E4230BDF2D07B /* NSHashTable+SHFastEnumerationProtocols.m */,
+				36E12AD1FCB146D5B6EF6E8E /* NSMapTable+SHFastEnumerationProtocols.h */,
+				FE7D71498E7F40178E3513C5 /* NSMapTable+SHFastEnumerationProtocols.m */,
+				7D16448AF14F4143B1F66FBF /* NSOrderedSet+SHFastEnumerationProtocols.h */,
+				8B6B127180D94BDDA29E320F /* NSOrderedSet+SHFastEnumerationProtocols.m */,
+				425F17D7C51E426D8835FDE0 /* NSSet+SHFastEnumerationProtocols.h */,
+				A3F30186D64E4B56AAD05502 /* NSSet+SHFastEnumerationProtocols.m */,
+				3EACD532EFEE4B9ABE478AB3 /* SHFastEnumerationProtocols.h */,
+				0CEC692812F44221A36638C3 /* SHFastEnumeration.h */,
+			);
+			name = SHFastEnumerationProtocols;
+			sourceTree = "<group>";
+		};
+		A6359135963B4E53B4FD396A = {
+			isa = PBXGroup;
+			children = (
+				71DFE02565DE42FF83E1C2B9 /* Frameworks */,
+				DBB3DC33934D4DD19245B6A2 /* Local Pods */,
+				F89CF8B03DAA4CD282CE7411 /* Products */,
+				6F625898B953494498BA0E44 /* Targets Support Files */,
+				5FED74E1AF014E07B7D0BA28 /* Podfile */,
+			);
+			sourceTree = "<group>";
+		};
+		BC3CFADCAA5C4F149466FD7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D31F7B6D7544718B0D8DC47 /* Pods.xcconfig */,
+				A902A3664E3A4297B5FD9174 /* Pods-environment.h */,
+				B65F1AFF48A44A22974A929D /* Pods-resources.sh */,
+				D7774CFF5CCF45F79CA2E0A0 /* Pods-acknowledgements.plist */,
+				032578FC99B84323A881DB06 /* Pods-acknowledgements.markdown */,
+				BA1F9D9760E945B682556BB5 /* Pods-dummy.m */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D277D4FB2CA64F63A62430F2 /* Pods-SHFastEnumerationProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				CD0FAC63288845999AF23561 /* Pods-SHFastEnumerationProtocols.xcconfig */,
+				59CC89ECBF3641CDBE66AFA2 /* Pods-SHFastEnumerationProtocols-Private.xcconfig */,
+				FB80E5A3FC5B4D1F92CC499B /* Pods-SHFastEnumerationProtocols-prefix.pch */,
+				6F068F902CCB4AACBE14D494 /* Pods-SHFastEnumerationProtocols-dummy.m */,
+			);
+			name = "Pods-SHFastEnumerationProtocols";
+			sourceTree = "<group>";
+		};
+		DBB3DC33934D4DD19245B6A2 /* Local Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D4FD6EF6D80439CAF2626E5 /* SHFastEnumerationProtocols */,
+			);
+			name = "Local Pods";
+			sourceTree = "<group>";
+		};
+		F89CF8B03DAA4CD282CE7411 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91CAF7C397424926A3EC7DAC /* libPods-SHFastEnumerationProtocols.a */,
+				AB088652582E45448359F64B /* libPods.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		34A1D8402BF84009A1728901 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AA0E8F6D7347F68317A97D /* NSArray+SHFastEnumerationProtocols.h in Headers */,
+				A60A448CB7734CA99A5FA1B8 /* NSDictionary+SHFastEnumerationProtocols.h in Headers */,
+				DEB80BC28C9B4F65A5ACD5DE /* NSHashTable+SHFastEnumerationProtocols.h in Headers */,
+				74C17D4F522B467E88C38AC2 /* NSMapTable+SHFastEnumerationProtocols.h in Headers */,
+				FFFD089A86DA498AA8942BBF /* NSOrderedSet+SHFastEnumerationProtocols.h in Headers */,
+				67FB0DAF95324CF9A74DE2B9 /* NSSet+SHFastEnumerationProtocols.h in Headers */,
+				B0AC4C97068B4BD4AE503A43 /* SHFastEnumerationProtocols.h in Headers */,
+				1DDD0A5B5CB34B2496F6ACBE /* SHFastEnumeration.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		16DE620627754482A7285CBD /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A992ED92F6645298EB4FC35 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				DF9A2B05F2B0443C840667E4 /* Sources */,
+				1F065286E5D3484CAC166C41 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABDF85081747424C9346ECD2 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = AB088652582E45448359F64B /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9FF6F4C076A841F399090183 /* Pods-SHFastEnumerationProtocols */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA067A1DEC7E41C6BDE7655F /* Build configuration list for PBXNativeTarget "Pods-SHFastEnumerationProtocols" */;
+			buildPhases = (
+				429AF655D1074550886C14E8 /* Sources */,
+				497566EBA32F4500868DF1B2 /* Frameworks */,
+				34A1D8402BF84009A1728901 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SHFastEnumerationProtocols";
+			productName = "Pods-SHFastEnumerationProtocols";
+			productReference = 91CAF7C397424926A3EC7DAC /* libPods-SHFastEnumerationProtocols.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C91218A31A9449F895C98469 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = 4EB938DA66CA48D78CDB0B5C /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A6359135963B4E53B4FD396A;
+			productRefGroup = F89CF8B03DAA4CD282CE7411 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FF6F4C076A841F399090183 /* Pods-SHFastEnumerationProtocols */,
+				16DE620627754482A7285CBD /* Pods */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		429AF655D1074550886C14E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA8B08A50F9C450391B85A4C /* NSArray+SHFastEnumerationProtocols.m in Sources */,
+				8049FA7BB7BA428C88A3B8CB /* NSDictionary+SHFastEnumerationProtocols.m in Sources */,
+				F55F5143517D415EA9ECE47A /* NSHashTable+SHFastEnumerationProtocols.m in Sources */,
+				B916B93596AD4DBDA314B172 /* NSMapTable+SHFastEnumerationProtocols.m in Sources */,
+				755D5725B66B4801B8C4906C /* NSOrderedSet+SHFastEnumerationProtocols.m in Sources */,
+				1F69109F2EC441C69FC22241 /* NSSet+SHFastEnumerationProtocols.m in Sources */,
+				37346CD1FD834F45928ECEC5 /* Pods-SHFastEnumerationProtocols-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF9A2B05F2B0443C840667E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B6A04FD5A94A7DAFE5B19D /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ABDF85081747424C9346ECD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FF6F4C076A841F399090183 /* Pods-SHFastEnumerationProtocols */;
+			targetProxy = D7D5D88BE7CE4BCF94A058F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		28FC8A92B04841F2B487457B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+			};
+			name = Release;
+		};
+		5572A04231694ECF921B7B0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D31F7B6D7544718B0D8DC47 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		709CFC6B120D4D75ABE12484 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D31F7B6D7544718B0D8DC47 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7D0ACE0A254F469182D58783 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59CC89ECBF3641CDBE66AFA2 /* Pods-SHFastEnumerationProtocols-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-SHFastEnumerationProtocols-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		834F7B66C6E84020BBD9712E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+			};
+			name = Debug;
+		};
+		B77A8FBDD28241CF8DB9EEA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59CC89ECBF3641CDBE66AFA2 /* Pods-SHFastEnumerationProtocols-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-SHFastEnumerationProtocols-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A992ED92F6645298EB4FC35 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5572A04231694ECF921B7B0D /* Release */,
+				709CFC6B120D4D75ABE12484 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EB938DA66CA48D78CDB0B5C /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28FC8A92B04841F2B487457B /* Release */,
+				834F7B66C6E84020BBD9712E /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA067A1DEC7E41C6BDE7655F /* Build configuration list for PBXNativeTarget "Pods-SHFastEnumerationProtocols" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B77A8FBDD28241CF8DB9EEA6 /* Release */,
+				7D0ACE0A254F469182D58783 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C91218A31A9449F895C98469 /* Project object */;
+}
