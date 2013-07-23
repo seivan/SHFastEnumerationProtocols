@@ -13,7 +13,6 @@
 @dynamic SH_lastObject;
 
 -(void)SH_each:(SHIteratorBlock)theBlock; { NSParameterAssert(theBlock);
-	
 
   for (id obj in self) {
     theBlock(obj);
@@ -29,14 +28,12 @@
 
 -(void)SH_concurrentEach:(SHIteratorBlock)theBlock; { NSParameterAssert(theBlock);
 
-  
   [self enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id obj, NSUInteger _, BOOL *__) {
     theBlock(obj);
   }];
 }
 
 -(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-
   
   NSMutableArray * map = [NSMutableArray arrayWithCapacity:self.count];
   
@@ -57,7 +54,6 @@
 }
 
 -(id)SH_find:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-
   id value = nil;
 	NSUInteger index = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
 		return theBlock(obj);
@@ -70,7 +66,8 @@
 }
 
 -(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  return [self objectsAtIndexes:[self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger _, BOOL *__) {
+  return [self objectsAtIndexes:
+          [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger _, BOOL *__) {
 		return theBlock(obj);
 	}]];
 }
@@ -82,17 +79,14 @@
 }
 
 -(BOOL)SH_all:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  
   return [self SH_findAll:theBlock].count == self.count;
 }
 
 -(BOOL)SH_any:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  
   return [self SH_find:theBlock] != nil;
 }
 
 -(BOOL)SH_none:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  
   return [self SH_find:theBlock] == nil;
 }
 
@@ -112,15 +106,14 @@
 @implementation NSMutableArray (SHMutableFastEnumerationBlocks)
 
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-  
 	[self setArray: [self SH_map:theBlock]];
 }
+
 -(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  
   [self setArray:[self SH_findAll:theBlock]];
 }
+
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  
   [self setArray:[self SH_reject:theBlock]];
 }
 
