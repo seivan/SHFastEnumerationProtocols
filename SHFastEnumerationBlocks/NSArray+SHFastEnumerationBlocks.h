@@ -4,6 +4,6 @@
 <SHFastEnumerationBlocks>
 @end
 
-@interface NSMutableArray (SHFastEnumerationExtendedBlocks)
-<SHFastEnumerationExtendedBlocks>
+@interface NSMutableArray (SHMutableFastEnumerationBlocks)
+<SHMutableFastEnumerationBlocks>
 @end

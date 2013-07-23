@@ -96,7 +96,7 @@
 
 @end
 
-@implementation NSMutableArray (SHFastEnumerationExtendedBlocks)
+@implementation NSMutableArray (SHMutableFastEnumerationBlocks)
 
 -(void)SH_selfMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
   

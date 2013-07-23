@@ -32,7 +32,7 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 
 @end
 
-@protocol SHFastEnumerationExtendedBlocks <NSObject>
+@protocol SHMutableFastEnumerationBlocks <NSObject>
 
 -(void)SH_selfMap:(SHIteratorReturnIdBlock)theBlock;
 -(void)SH_selfFindAll:(SHIteratorReturnTruthBlock)theBlock;

@@ -5,5 +5,5 @@
 @end
 
 @interface NSMutableOrderedSet (SHFastEnumerationExtendedBlocks)
-<SHFastEnumerationExtendedBlocks>
+<SHMutableFastEnumerationBlocks>
 @end

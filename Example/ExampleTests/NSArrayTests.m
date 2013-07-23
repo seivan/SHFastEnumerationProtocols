@@ -21,7 +21,7 @@
 
 -(void)setUp; {
   [super setUp];
-  self.subject = @[ @"one", @"1", @"two",@"2", @"three", @"3", @"one", @"1"].mutableCopy;
+  self.subject = @[ @"one", @"1", @"two",@"2", @"three", @"3", @"one", @"1"];
   self.matching = @[].mutableCopy;
 }
 
@@ -238,6 +238,7 @@
 }
 
 -(void)testSelfReject; {
+
   self.matching = self.subject.mutableCopy;
   
   [self.matching SH_selfReject:^BOOL(id obj) {
