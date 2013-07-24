@@ -17,6 +17,7 @@
 		22A5DACD1793A30900AD6E43 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A5DAAD1793A30800AD6E43 /* Cocoa.framework */; };
 		22A5DAD51793A30900AD6E43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22A5DAD31793A30900AD6E43 /* InfoPlist.strings */; };
 		22A5DB0C179CBC7700AD6E43 /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DB0B179CBC7700AD6E43 /* NSArrayTests.m */; };
+		22A5DB1F179F19B500AD6E43 /* NSOrderedSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DB1E179F19B500AD6E43 /* NSOrderedSetTests.m */; };
 		D147EAD64893494F82C56796 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31338839035B47748125E9B3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,8 @@
 		22A5DB0A179CBC7700AD6E43 /* NSArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayTests.h; sourceTree = "<group>"; };
 		22A5DB0B179CBC7700AD6E43 /* NSArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayTests.m; sourceTree = "<group>"; };
 		22A5DB1C179D1DE400AD6E43 /* SHFastEnumerationTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHFastEnumerationTests.h; sourceTree = "<group>"; };
+		22A5DB1D179F19B400AD6E43 /* NSOrderedSetTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSOrderedSetTests.h; sourceTree = "<group>"; };
+		22A5DB1E179F19B500AD6E43 /* NSOrderedSetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSOrderedSetTests.m; sourceTree = "<group>"; };
 		31338839035B47748125E9B3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B64FE6F42C4DAE8451792B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -147,6 +150,8 @@
 				22A5DB1C179D1DE400AD6E43 /* SHFastEnumerationTests.h */,
 				22A5DB0A179CBC7700AD6E43 /* NSArrayTests.h */,
 				22A5DB0B179CBC7700AD6E43 /* NSArrayTests.m */,
+				22A5DB1D179F19B400AD6E43 /* NSOrderedSetTests.h */,
+				22A5DB1E179F19B500AD6E43 /* NSOrderedSetTests.m */,
 				22A5DAD11793A30900AD6E43 /* Supporting Files */,
 			);
 			path = ExampleTests;
@@ -312,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A5DB0C179CBC7700AD6E43 /* NSArrayTests.m in Sources */,
+				22A5DB1F179F19B500AD6E43 /* NSOrderedSetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

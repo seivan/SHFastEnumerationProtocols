@@ -15,6 +15,7 @@
 
 @interface NSArrayTests ()
 <SHTestsFastEnumerationBlocks,
+SHTestsFastEnumerationProperties,
 SHTestsFastEnumerationOrderedBlocks,
 SHTestsFastEnumerationOrderedProperties,
 SHTestsFastEnumerationOrdered>
@@ -205,6 +206,83 @@ SHTestsMutableFastEnumerationOrdered>
   STAssertTrue([matching containsObject:@(1)], nil);
   STAssertTrue([matching containsObject:@(2)], nil);
 
+  
+}
+
+#pragma mark - <SHTestsFastEnumerationProperties>
+-(void)testToArray; {
+  self.matching = self.subject.SH_toArray.copy;
+  
+  STAssertTrue([self.matching isKindOfClass:[NSArray class]], nil);
+  STAssertEqualObjects(self.subject, self.matching, nil);
+}
+
+-(void)testToSet; {
+  STAssertTrue([self.subject.SH_toSet isKindOfClass:[NSSet class]], nil);
+  STAssertTrue(self.subject.SH_toSet.count > 0, nil);
+  
+  for (id obj in self.subject.SH_toSet)
+    STAssertTrue([self.subject containsObject:obj], nil);
+
+}
+
+-(void)testToOrderedSet; {
+  STAssertTrue([self.subject.SH_toOrderedSet  isKindOfClass:[NSOrderedSet class]], nil);
+  STAssertTrue(self.subject.SH_toOrderedSet.count > 0, nil);
+  
+  [self.subject.SH_toOrderedSet enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *_) {
+    STAssertEqualObjects(obj, self.subject[idx], nil);
+  }];
+    
+
+}
+
+-(void)testToDictionary; {
+  STAssertTrue([self.subject.SH_toDictionary isKindOfClass:[NSDictionary class]], nil);
+  STAssertTrue(self.subject.SH_toDictionary.count > 0, nil);
+  
+  for (id key in self.subject.SH_toDictionary) {
+    NSUInteger index = [self.subject indexOfObject:key];
+    id value = self.subject.SH_toDictionary[key];
+    STAssertEqualObjects(value, @(index), nil);
+    STAssertEqualObjects(key, self.subject[index], nil);
+  }
+}
+
+-(void)testToMapTableWeakToWeak; {
+  STAssertTrue([self.subject.SH_toMapTableWeakToWeak isKindOfClass:[NSMapTable class]], nil);
+  STAssertTrue(self.subject.SH_toMapTableWeakToWeak.count > 0, nil);
+  NSMapTable * mapTable = self.subject.SH_toMapTableWeakToWeak;
+  for (id key in mapTable) {
+    NSLog(@"KEY; %@", key);
+    NSLog(@"INDEX FOR KEY; %ld", (unsigned long)[self.subject indexOfObject:key]);
+    NSLog(@"VALUE FOR KEY; %@", [mapTable objectForKey:key]);
+    NSLog(@"-----------");
+//    id value = [mapTable objectForKey:key];
+//    NSUInteger index = [self.subject indexOfObject:key];
+//    STAssertEqualObjects(value, @(index), nil);
+//    STAssertEqualObjects(key, self.subject[index], nil);
+  }
+  
+}
+
+-(void)testToMapTableWeakToStrong; {
+  
+}
+
+-(void)testToMapTableStrongToStrong; {
+  
+}
+
+-(void)testToMapTableStrongToWeak; {
+  
+}
+
+-(void)testToHashTableWeak; {
+  
+}
+
+-(void)testToHashTableStrong; {
   
 }
 

@@ -1,9 +1,15 @@
 #import "SHFastEnumeration.h"
 
-@interface NSOrderedSet (SHFastEnumerationBlocks)
-//<SHFastEnumerationBlocks>
+@interface NSOrderedSet (SHFastEnumerationProtocols)
+//<SHFastEnumerationBlocks,
+//SHFastEnumerationOrderedBlocks,
+//SHFastEnumerationOrdered,
+//SHFastEnumerationOrderedProperties>
+
 @end
 
-@interface NSMutableOrderedSet (SHFastEnumerationExtendedBlocks)
-//<SHMutableFastEnumerationBlocks>
+@interface NSMutableOrderedSet (SHFastEnumerationProtocols)
+//<SHMutableFastEnumerationBlocks,
+//SHMutableFastEnumerationOrdered>
+
 @end

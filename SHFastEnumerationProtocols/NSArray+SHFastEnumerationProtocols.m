@@ -11,6 +11,16 @@
 @implementation NSArray (SHFastEnumerationProtocols)
 @dynamic SH_firstObject;
 @dynamic SH_lastObject;
+@dynamic SH_toArray;
+@dynamic SH_toSet;
+@dynamic SH_toOrderedSet;
+@dynamic SH_toDictionary;
+@dynamic SH_toMapTableWeakToWeak;
+@dynamic SH_toMapTableWeakToStrong;
+@dynamic SH_toMapTableStrongToStrong;
+@dynamic SH_toMapTableStrongToWeak;
+@dynamic SH_toHashTableWeak;
+@dynamic SH_toHashTableStrong;
 
 #pragma mark - <SHFastEnumerationBlocks>
 -(void)SH_each:(SHIteratorBlock)theBlock; { NSParameterAssert(theBlock);
@@ -85,6 +95,77 @@
   return [self SH_all:theBlock] == NO;
 }
 
+#pragma mark - <SHFastEnumerationProperties>
+-(NSArray *)SH_toArray; {
+  return self.copy;
+}
+
+-(NSSet *)SH_toSet; {
+  return [NSSet setWithArray:self];
+}
+
+-(NSOrderedSet *)SH_toOrderedSet; {
+  return [NSOrderedSet orderedSetWithArray:self];
+}
+
+-(NSDictionary *)SH_toDictionary; {
+  return [NSDictionary dictionaryWithObjects:[self SH_map:^id(id obj) {
+    return @([self indexOfObject:obj]);
+  }] forKeys:self];
+}
+
+-(NSMapTable *)SH_toMapTableWeakToWeak; {
+  NSMapTable * mapTable = [NSMapTable weakToWeakObjectsMapTable];
+  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
+    [mapTable setObject:@(index) forKey:obj];
+  }];
+  return mapTable;
+}
+
+-(NSMapTable *)SH_toMapTableWeakToStrong; {
+  NSMapTable * mapTable = [NSMapTable weakToStrongObjectsMapTable];
+  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
+    [mapTable setObject:@(index) forKey:obj];
+  }];
+  return mapTable;
+}
+
+-(NSMapTable *)SH_toMapTableStrongToStrong; {
+  NSMapTable * mapTable = [NSMapTable strongToStrongObjectsMapTable];
+  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
+    [mapTable setObject:@(index) forKey:obj];
+  }];
+  return mapTable;
+}
+
+-(NSMapTable *)SH_toMapTableStrongToWeak; {
+  NSMapTable * mapTable = [NSMapTable strongToWeakObjectsMapTable];
+  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
+    [mapTable setObject:@(index) forKey:obj];
+  }];
+  return mapTable;
+  
+}
+
+-(NSHashTable *)SH_toHashTableWeak; {
+  NSHashTable * hashTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsStrongMemory
+                                                        capacity:self.count];
+  [self SH_each:^(id obj) {
+    [hashTable addObject:obj];
+  }];
+  return hashTable;
+}
+
+-(NSHashTable *)SH_toHashTableStrong; {
+  NSHashTable * hashTable = [NSHashTable weakObjectsHashTable];
+  [self SH_each:^(id obj) {
+    [hashTable addObject:obj];
+  }];
+  return hashTable;
+}
+
+
+
 #pragma mark - <SHFastEnumerationOrderedBlocks>
 
 -(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock; { NSParameterAssert(theBlock);
@@ -105,6 +186,7 @@
 -(id)SH_lastObject; {
   return self.lastObject;
 }
+
 
 #pragma mark - <SHFastEnumerationOrdered>
 -(instancetype)SH_reverse; {

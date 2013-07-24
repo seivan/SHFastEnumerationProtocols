@@ -2,6 +2,7 @@
 
 @interface NSArray (SHFastEnumerationProtocols)
 <SHFastEnumerationBlocks,
+SHFastEnumerationProperties,
 SHFastEnumerationOrderedBlocks,
 SHFastEnumerationOrdered,
 SHFastEnumerationOrderedProperties>

@@ -9,8 +9,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 
-@protocol SHTestsFastEnumerationBlocks <NSObject>
 #pragma mark - <SHTestsFastEnumerationBlocks>
+@protocol SHTestsFastEnumerationBlocks <NSObject>
 -(void)testEach;
 -(void)testMap;
 -(void)testReduce;
@@ -22,31 +22,45 @@
 -(void)testNone;
 @end
 
-@protocol SHTestsFastEnumerationOrderedBlocks <NSObject>
+#pragma mark - <SHTestsFastEnumerationProperties>
+@protocol SHTestsFastEnumerationProperties <NSObject>
+-(void)testToArray;
+-(void)testToSet;
+-(void)testToOrderedSet;
+-(void)testToDictionary;
+-(void)testToMapTableWeakToWeak;
+-(void)testToMapTableWeakToStrong;
+-(void)testToMapTableStrongToStrong;
+-(void)testToMapTableStrongToWeak;
+-(void)testToHashTableWeak;
+-(void)testToHashTableStrong;
+@end
+
 #pragma mark - <SHTestsFastEnumerationOrderedBlocks>
+@protocol SHTestsFastEnumerationOrderedBlocks <NSObject>
 -(void)testEachWithIndex;
 @end
 
-@protocol SHTestsFastEnumerationOrderedProperties <NSObject>
 #pragma mark - <SHTestsFastEnumerationOrderedProperties>
+@protocol SHTestsFastEnumerationOrderedProperties <NSObject>
 -(void)testFirstObject;
 -(void)testLastObject;
 @end
 
-@protocol SHTestsFastEnumerationOrdered <NSObject>
 #pragma mark - <SHTestsFastEnumerationOrdered>
+@protocol SHTestsFastEnumerationOrdered <NSObject>
 -(void)testReverse;
 @end
 
-@protocol SHTestsMutableFastEnumerationBlocks <NSObject>
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
+@protocol SHTestsMutableFastEnumerationBlocks <NSObject>
 -(void)testModifyMap;
 -(void)testModifyFindAll;
 -(void)testModifyReject;
 @end
 
-@protocol SHTestsMutableFastEnumerationOrdered <NSObject>
 #pragma mark - <SHTestsMutableFastEnumerationOrdered>
+@protocol SHTestsMutableFastEnumerationOrdered <NSObject>
 -(void)testModifyReverse;
 -(void)testPopObjectAtIndex;
 -(void)testPopFirstObject;

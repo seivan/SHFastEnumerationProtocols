@@ -24,6 +24,22 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 -(BOOL)SH_none:(SHIteratorReturnTruthBlock)theBlock; // !Every
 @end
 
+#pragma mark - <SHFastEnumerationProperties>
+@protocol SHFastEnumerationProperties <NSObject>
+@property(nonatomic,readonly) NSArray      * SH_toArray;
+@property(nonatomic,readonly) NSSet        * SH_toSet;
+@property(nonatomic,readonly) NSOrderedSet * SH_toOrderedSet;
+@property(nonatomic,readonly) NSDictionary * SH_toDictionary;
+
+@property(nonatomic,readonly) NSMapTable   * SH_toMapTableWeakToWeak;
+@property(nonatomic,readonly) NSMapTable   * SH_toMapTableWeakToStrong;
+@property(nonatomic,readonly) NSMapTable   * SH_toMapTableStrongToStrong;
+@property(nonatomic,readonly) NSMapTable   * SH_toMapTableStrongToWeak;
+
+@property(nonatomic,readonly) NSHashTable   * SH_toHashTableWeak;
+@property(nonatomic,readonly) NSHashTable   * SH_toHashTableStrong;
+@end
+
 #pragma mark - <SHFastEnumerationOrderedBlocks>
 @protocol SHFastEnumerationOrderedBlocks <NSObject>
 @required
@@ -36,6 +52,7 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 @property(nonatomic,readonly) id SH_firstObject;
 @property(nonatomic,readonly) id SH_lastObject;
 @end
+
 
 #pragma mark - <SHFastEnumerationOrdered>
 @protocol SHFastEnumerationOrdered <NSObject>
