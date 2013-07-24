@@ -83,7 +83,7 @@ SHTestsMutableFastEnumerationOrdered>
                                      withBlock:^id(NSMutableArray * memo, id obj) {
     [memo addObject:obj];
     return memo;
-  }].mutableCopy;
+  }];
 
   STAssertEqualObjects(self.subject, self.matching, nil);
 }

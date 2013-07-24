@@ -15,7 +15,7 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 -(void)SH_each:(SHIteratorBlock)theBlock;
 -(void)SH_concurrentEach:(SHIteratorBlock)theBlock;
 -(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; //Collect
--(instancetype)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; //Inject/FoldLeft
+-(id)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; //Inject/FoldLeft
 -(id)SH_find:(SHIteratorReturnTruthBlock)theBlock; //Match
 -(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; //Select
 -(instancetype)SH_reject:(SHIteratorReturnTruthBlock)theBlock; //Filter

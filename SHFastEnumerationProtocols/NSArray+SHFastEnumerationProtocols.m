@@ -54,10 +54,10 @@
   return map.copy;
 }
 
--(instancetype)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; { NSParameterAssert(theBlock);
+-(id)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; { NSParameterAssert(theBlock);
 
   id result = theValue;
-	for (id obj in self)result = theBlock(result,obj);
+	for (id obj in self) result = theBlock(result,obj);
 	return result;
 
 }
@@ -206,7 +206,7 @@
 #pragma mark - <SHMutableFastEnumerationOrdered>
 
 -(void)SH_modifyReverse; {
-  return [self setArray:self.reverseObjectEnumerator.allObjects];
+  [self setArray:self.reverseObjectEnumerator.allObjects];
 }
 
 
