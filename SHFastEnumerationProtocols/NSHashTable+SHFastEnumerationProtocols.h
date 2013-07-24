@@ -2,6 +2,9 @@
 
 #import "SHFastEnumeration.h"
 
-@interface NSHashTable (SHFastEnumerationBlocks)
-
+@interface NSHashTable (SHFastEnumerationProtocols)
+<SHFastEnumerationBlocks,
+SHFastEnumerationProperties,
+SHMutableFastEnumerationBlocks>
 @end
+
