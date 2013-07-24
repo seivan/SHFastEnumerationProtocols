@@ -8,6 +8,10 @@
 
 #import "NSArray+SHFastEnumerationProtocols.h"
 
+@interface NSArray (Private)
+-(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
+@end
+
 @implementation NSArray (SHFastEnumerationProtocols)
 @dynamic SH_firstObject;
 @dynamic SH_lastObject;
@@ -109,42 +113,30 @@
 }
 
 -(NSDictionary *)SH_toDictionary; {
-  return [NSDictionary dictionaryWithObjects:[self SH_map:^id(id obj) {
-    return @([self indexOfObject:obj]);
-  }] forKeys:self];
+  __block NSInteger counter = -1;
+  return [NSDictionary dictionaryWithObjects:self forKeys:[self SH_map:^id(id obj) {
+    return @(counter +=1);
+  }]];
 }
 
 -(NSMapTable *)SH_toMapTableWeakToWeak; {
   NSMapTable * mapTable = [NSMapTable weakToWeakObjectsMapTable];
-  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
-    [mapTable setObject:@(index) forKey:obj];
-  }];
-  return mapTable;
+  return [self mapTableWith:mapTable];
 }
 
 -(NSMapTable *)SH_toMapTableWeakToStrong; {
   NSMapTable * mapTable = [NSMapTable weakToStrongObjectsMapTable];
-  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
-    [mapTable setObject:@(index) forKey:obj];
-  }];
-  return mapTable;
+  return [self mapTableWith:mapTable];
 }
 
 -(NSMapTable *)SH_toMapTableStrongToStrong; {
   NSMapTable * mapTable = [NSMapTable strongToStrongObjectsMapTable];
-  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
-    [mapTable setObject:@(index) forKey:obj];
-  }];
-  return mapTable;
+  return [self mapTableWith:mapTable];
 }
 
 -(NSMapTable *)SH_toMapTableStrongToWeak; {
   NSMapTable * mapTable = [NSMapTable strongToWeakObjectsMapTable];
-  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
-    [mapTable setObject:@(index) forKey:obj];
-  }];
-  return mapTable;
-  
+  return [self mapTableWith:mapTable];
 }
 
 -(NSHashTable *)SH_toHashTableWeak; {
@@ -239,8 +231,16 @@
 }
 
 
-
-
-
 @end
 
+@implementation NSArray (Private)
+
+#pragma mark - Private
+-(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable; {
+  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
+    [theMapTable setObject:obj forKey:@(index)];
+  }];
+  return theMapTable;
+}
+
+@end

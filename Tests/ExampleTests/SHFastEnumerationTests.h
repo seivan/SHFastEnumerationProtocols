@@ -66,3 +66,8 @@
 -(void)testPopFirstObject;
 -(void)testPopLastObject;
 @end
+
+#pragma mark - <SHTestsHelpers>
+@protocol SHTestsHelpers <NSObject>
+-(void)assertMapTableWithMapTable:(NSMapTable *)theMapTable;
+@end

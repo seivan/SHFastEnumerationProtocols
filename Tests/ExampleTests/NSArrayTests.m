@@ -12,6 +12,10 @@
 #import "NSArrayTests.h"
 
 #import "NSArray+SHFastEnumerationProtocols.h"
+@interface NSArrayTests (Private)
+<SHTestsHelpers>
+@end
+
 
 @interface NSArrayTests ()
 <SHTestsFastEnumerationBlocks,
@@ -241,41 +245,27 @@ SHTestsMutableFastEnumerationOrdered>
   STAssertTrue([self.subject.SH_toDictionary isKindOfClass:[NSDictionary class]], nil);
   STAssertTrue(self.subject.SH_toDictionary.count > 0, nil);
   
-  for (id key in self.subject.SH_toDictionary) {
-    NSUInteger index = [self.subject indexOfObject:key];
-    id value = self.subject.SH_toDictionary[key];
-    STAssertEqualObjects(value, @(index), nil);
-    STAssertEqualObjects(key, self.subject[index], nil);
-  }
+  [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
+    STAssertEqualObjects(self.subject[index], [self.subject.SH_toDictionary objectForKey:@(index)], nil);
+  }];
+
 }
 
 -(void)testToMapTableWeakToWeak; {
-  STAssertTrue([self.subject.SH_toMapTableWeakToWeak isKindOfClass:[NSMapTable class]], nil);
-  STAssertTrue(self.subject.SH_toMapTableWeakToWeak.count > 0, nil);
-  NSMapTable * mapTable = self.subject.SH_toMapTableWeakToWeak;
-  for (id key in mapTable) {
-    NSLog(@"KEY; %@", key);
-    NSLog(@"INDEX FOR KEY; %ld", (unsigned long)[self.subject indexOfObject:key]);
-    NSLog(@"VALUE FOR KEY; %@", [mapTable objectForKey:key]);
-    NSLog(@"-----------");
-//    id value = [mapTable objectForKey:key];
-//    NSUInteger index = [self.subject indexOfObject:key];
-//    STAssertEqualObjects(value, @(index), nil);
-//    STAssertEqualObjects(key, self.subject[index], nil);
-  }
+  [self assertMapTableWithMapTable:self.subject.SH_toMapTableWeakToWeak];
   
 }
 
 -(void)testToMapTableWeakToStrong; {
-  
+  [self assertMapTableWithMapTable:self.subject.SH_toMapTableWeakToStrong];
 }
 
 -(void)testToMapTableStrongToStrong; {
-  
+  [self assertMapTableWithMapTable:self.subject.SH_toMapTableStrongToStrong];
 }
 
 -(void)testToMapTableStrongToWeak; {
-  
+  [self assertMapTableWithMapTable:self.subject.SH_toMapTableStrongToWeak];
 }
 
 -(void)testToHashTableWeak; {
@@ -452,6 +442,19 @@ SHTestsMutableFastEnumerationOrdered>
   
 }
 
+@end
 
+
+@implementation NSArrayTests (Private)
+-(void)assertMapTableWithMapTable:(NSMapTable *)theMapTable; {
+  
+  STAssertTrue([theMapTable isKindOfClass:[NSMapTable class]], nil);
+  STAssertTrue(theMapTable.count > 0, nil);
+  
+  [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
+    STAssertEqualObjects(self.subject[index], [theMapTable objectForKey:@(index)], nil);
+  }];
+
+}
 
 @end
