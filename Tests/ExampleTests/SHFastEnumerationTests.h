@@ -24,6 +24,7 @@
 
 #pragma mark - <SHTestsFastEnumerationProperties>
 @protocol SHTestsFastEnumerationProperties <NSObject>
+-(void)testIsEmtpy;
 -(void)testToArray;
 -(void)testToSet;
 -(void)testToOrderedSet;
@@ -70,4 +71,5 @@
 #pragma mark - <SHTestsHelpers>
 @protocol SHTestsHelpers <NSObject>
 -(void)assertMapTableWithMapTable:(NSMapTable *)theMapTable;
+-(void)assertHashTableWithMapTable:(NSHashTable *)theHashTable;
 @end

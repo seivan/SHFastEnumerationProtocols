@@ -30,10 +30,7 @@
 
 #pragma mark - <SHFastEnumerationBlocks>
 -(void)SH_each:(SHIteratorBlock)theBlock; { NSParameterAssert(theBlock);
-  
-  for (id obj in self) {
-    theBlock(obj);
-  }
+  for (id obj in self) theBlock(obj);
 }
 
 
@@ -45,13 +42,11 @@
 }
 
 -(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-  
   NSHashTable * map = self.copy;
-  
+  [map removeAllObjects];
   for (id obj in self) {
     id value = theBlock(obj);
-    if(value)
-      [map addObject:value];
+    if(value) [map addObject:value];
   }
   return map;
 }
@@ -73,15 +68,6 @@
       break;
     }
   }
-//  
-//  
-//	NSUInteger index = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-//		return theBlock(obj);
-//	}];
-//	
-//	if (index != NSNotFound) value = self[index];
-//	
-//	return value;
   return value;
 }
 
@@ -93,9 +79,7 @@
 }
 
 -(instancetype)SH_reject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  return [self SH_findAll:^BOOL(id obj) {
-    return theBlock(obj) == NO;
-  }];
+  return [self SH_findAll:^BOOL(id obj) { return theBlock(obj) == NO; }];
 }
 
 -(BOOL)SH_all:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
@@ -111,6 +95,9 @@
 }
 
 #pragma mark - <SHFastEnumerationProperties>
+-(BOOL)SH_isEmpty; {
+  return self.count == 0;
+}
 -(NSArray *)SH_toArray; {
   return self.allObjects;
 }
@@ -125,7 +112,8 @@
 
 -(NSDictionary *)SH_toDictionary; {
   __block NSInteger counter = -1;
-  return [NSDictionary dictionaryWithObjects:self.SH_toArray forKeys:[self SH_map:^id(id obj) {
+  return [NSDictionary dictionaryWithObjects:self.SH_toArray
+                                     forKeys:[self SH_map:^id(id obj) {
     return @(counter +=1);
   }].SH_toArray];
 }
@@ -151,19 +139,14 @@
 }
 
 -(NSHashTable *)SH_toHashTableWeak; {
-  NSHashTable * hashTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsStrongMemory
-                                                        capacity:self.count];
-  [self SH_each:^(id obj) {
-    [hashTable addObject:obj];
-  }];
+  NSHashTable * hashTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsStrongMemory capacity:self.count];
+  [self SH_each:^(id obj) { [hashTable addObject:obj]; }];
   return hashTable;
 }
 
 -(NSHashTable *)SH_toHashTableStrong; {
   NSHashTable * hashTable = [NSHashTable weakObjectsHashTable];
-  [self SH_each:^(id obj) {
-    [hashTable addObject:obj];
-  }];
+  [self SH_each:^(id obj) { [hashTable addObject:obj]; }];
   return hashTable;
 }
 
@@ -173,21 +156,18 @@
 
 #pragma mark - <SHMutableFastEnumerationBlocks>
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-
   NSHashTable * hashTable = self.copy;
   [self removeAllObjects];
-  for (id obj in [hashTable SH_map:theBlock]) {
-    [self addObject:obj];
-  }
+  for(id obj in [hashTable SH_map:theBlock]) [self addObject:obj];
+
 
 }
 
 -(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
   NSHashTable * hashTable = self.copy;
   [self removeAllObjects];
-  for (id obj in [hashTable SH_findAll:theBlock]) {
-    [self addObject:obj];
-  }
+  for (id obj in [hashTable SH_findAll:theBlock]) [self addObject:obj];
+
   
   
 }
@@ -195,9 +175,8 @@
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
   NSHashTable * hashTable = self.copy;
   [self removeAllObjects];
-  for (id obj in [hashTable SH_reject:theBlock]) {
-    [self addObject:obj];
-  }
+  for (id obj in [hashTable SH_reject:theBlock]) [self addObject:obj];
+
 }
 
 
@@ -208,9 +187,7 @@
 #pragma mark - Private
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable; {
   NSInteger index = -1;
-  for (id obj in self) {
-    [theMapTable setObject:obj forKey:@(index+=1)];
-  }
+  for (id obj in self) [theMapTable setObject:obj forKey:@(index+=1)];
   return theMapTable;
 }
 

@@ -17,8 +17,8 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 -(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; //Collect
 -(id)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; //Inject/FoldLeft
 -(id)SH_find:(SHIteratorReturnTruthBlock)theBlock; //Match
--(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; //Select
--(instancetype)SH_reject:(SHIteratorReturnTruthBlock)theBlock; //Filter
+-(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; //Select/Filter
+-(instancetype)SH_reject:(SHIteratorReturnTruthBlock)theBlock; //!Select/Filter
 -(BOOL)SH_all:(SHIteratorReturnTruthBlock)theBlock; //Every
 -(BOOL)SH_any:(SHIteratorReturnTruthBlock)theBlock; //Some
 -(BOOL)SH_none:(SHIteratorReturnTruthBlock)theBlock; // !Every
@@ -26,6 +26,9 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 
 #pragma mark - <SHFastEnumerationProperties>
 @protocol SHFastEnumerationProperties <NSObject>
+@required
+@property(nonatomic,readonly) BOOL           SH_isEmpty;
+
 @property(nonatomic,readonly) NSArray      * SH_toArray;
 @property(nonatomic,readonly) NSSet        * SH_toSet;
 @property(nonatomic,readonly) NSOrderedSet * SH_toOrderedSet;
@@ -36,8 +39,8 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 @property(nonatomic,readonly) NSMapTable   * SH_toMapTableStrongToStrong;
 @property(nonatomic,readonly) NSMapTable   * SH_toMapTableStrongToWeak;
 
-@property(nonatomic,readonly) NSHashTable   * SH_toHashTableWeak;
-@property(nonatomic,readonly) NSHashTable   * SH_toHashTableStrong;
+@property(nonatomic,readonly) NSHashTable  * SH_toHashTableWeak;
+@property(nonatomic,readonly) NSHashTable  * SH_toHashTableStrong;
 @end
 
 #pragma mark - <SHFastEnumerationOrderedBlocks>

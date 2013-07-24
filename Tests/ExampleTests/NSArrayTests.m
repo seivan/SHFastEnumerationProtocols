@@ -214,6 +214,12 @@ SHTestsMutableFastEnumerationOrdered>
 }
 
 #pragma mark - <SHTestsFastEnumerationProperties>
+-(void)testIsEmtpy; {
+  STAssertFalse(self.subject.SH_isEmpty, nil);
+  STAssertTrue(self.matching.SH_isEmpty, nil);
+  BOOL isEmpty = self.matching.count == 0;
+  STAssertEquals(isEmpty, self.matching.SH_isEmpty, nil);
+}
 -(void)testToArray; {
   self.matching = self.subject.SH_toArray.copy;
   
@@ -269,7 +275,7 @@ SHTestsMutableFastEnumerationOrdered>
 }
 
 -(void)testToHashTableWeak; {
-  
+
 }
 
 -(void)testToHashTableStrong; {
@@ -450,11 +456,23 @@ SHTestsMutableFastEnumerationOrdered>
   
   STAssertTrue([theMapTable isKindOfClass:[NSMapTable class]], nil);
   STAssertTrue(theMapTable.count > 0, nil);
+  STAssertTrue(self.subject.count > 0, nil);
   
   [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
     STAssertEqualObjects(self.subject[index], [theMapTable objectForKey:@(index)], nil);
   }];
 
+}
+
+-(void)assertHashTableWithMapTable:(NSHashTable *)theHashTable; {
+  STAssertTrue([theHashTable isKindOfClass:[NSHashTable class]], nil);
+  STAssertTrue(theHashTable.count > 0, nil);
+  STAssertTrue(self.subject.count > 0, nil);
+  [self.subject SH_each:^(id obj) {
+    STAssertTrue([theHashTable containsObject:obj], nil);
+  }];
+  
+  
 }
 
 @end
