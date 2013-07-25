@@ -30,7 +30,7 @@
 @implementation SHAppDelegate
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification;{
-  NSCountedSet
+  
 }
 
 @end

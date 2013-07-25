@@ -9,15 +9,20 @@ Pod::Spec.new do |s|
   s.version      = version
   s.summary      = "NSFastEnumeration helpers and enumeration blocks through a protocol on foundation collection classes."
   s.description  = <<-DESC
-                        Helpers for both keyed, index and unordered collection objects.
-                        Block based callers for enumeration. 
+NSFastEnumeration helpers and enumeration blocks through a protocol on foundation collection classes.
+Helpers for both keyed, index and unordered collection objects.
+Converting to other collection classes through dot notation.
+Block based callers for enumeration. 
+Tested and ready. 
 
-                      * NSArray and NSMutableArray
-                      * NSOrderedSet and NSMutableOrderedSet
-                      * NSSet, NSMutableSet and NSCountedset
-                      * NSHashTable 
-                      * NSDictionary and NSMutableDictionary
-                      * NSMapTable
+* NSArray and NSMutableArray
+* NSOrderedSet and NSMutableOrderedSet
+* NSSet, NSMutableSet and NSCountedset
+* NSHashTable 
+* NSDictionary and NSMutableDictionary 
+* NSMapTable
+
+TODO: NSIndexSet, NSMutableIndexSet and NSEnumerator. 
                     DESC
 
   s.homepage     = url

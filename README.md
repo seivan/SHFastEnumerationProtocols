@@ -17,7 +17,8 @@ Block based callers for enumeration.
 * NSMapTable
 
 
-### API
+API
+----------
 
 #### [SHFastEnumerationProtocols](https://github.com/seivan/SHFastEnumerationProtocols#api-1)
 
@@ -40,7 +41,7 @@ Put this either in specific files or your project prefix file
 ```objective-c
 #import "<CollectionClass>+SHFastEnumerationProtocols.h"
 ```
-or
+or for all classes
 ```objective-c
 #import "SHFastEnumerationProtocols.h"
 ```
@@ -50,7 +51,9 @@ API
 -----
 
 ```objective-c
+
 #pragma mark - Block Definitions
+//obj is the key for keyed indexed classes (NSDictionary, NSMapTable)
 typedef void (^SHIteratorBlock)(id obj);
 typedef void (^SHIteratorWithIndexBlock)(id obj, NSUInteger index) ;
 
@@ -82,8 +85,10 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 @property(nonatomic,readonly) NSArray      * SH_toArray;
 @property(nonatomic,readonly) NSSet        * SH_toSet;
 @property(nonatomic,readonly) NSOrderedSet * SH_toOrderedSet;
-@property(nonatomic,readonly) NSDictionary * SH_toDictionary;
 
+//The objects are the values while the key will either be an NSNumber index (from ordered)
+//or a counted key (unordereD)
+@property(nonatomic,readonly) NSDictionary * SH_toDictionary;
 @property(nonatomic,readonly) NSMapTable   * SH_toMapTableWeakToWeak;
 @property(nonatomic,readonly) NSMapTable   * SH_toMapTableWeakToStrong;
 @property(nonatomic,readonly) NSMapTable   * SH_toMapTableStrongToStrong;
@@ -131,9 +136,6 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 -(id)SH_popFirstObject;
 -(id)SH_popLastObject;
 @end
-
-
-
 
 
 ```
