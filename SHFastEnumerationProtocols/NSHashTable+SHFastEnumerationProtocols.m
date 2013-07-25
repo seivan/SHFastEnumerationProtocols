@@ -7,7 +7,7 @@
 //
 
 #import "NSHashTable+SHFastEnumerationProtocols.h"
-#import "NSArray+SHFastEnumerationProtocols.h"
+
 
 
 
@@ -106,7 +106,7 @@
 }
 
 -(NSOrderedSet *)SH_toOrderedSet; {
-  return self.SH_toArray.SH_toOrderedSet;
+  return [NSOrderedSet orderedSetWithArray:self.SH_toArray];
 }
 
 -(NSDictionary *)SH_toDictionary; {

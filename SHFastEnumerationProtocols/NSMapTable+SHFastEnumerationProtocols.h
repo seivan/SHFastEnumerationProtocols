@@ -1,5 +1,11 @@
 #import "SHFastEnumeration.h"
 
-@interface NSMapTable (SHFastEnumerationBlocks)
-
+@interface NSMapTable (SHFastEnumerationProtocols)
+<SHFastEnumerationBlocks,
+SHFastEnumerationProperties,
+SHMutableFastEnumerationBlocks>
 @end
+
+
+
+

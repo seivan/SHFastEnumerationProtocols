@@ -7,7 +7,7 @@
 //
 
 #import "NSOrderedSet+SHFastEnumerationProtocols.h"
-#import "NSArray+SHFastEnumerationProtocols.h"
+
 
 @interface NSOrderedSet (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
@@ -68,10 +68,10 @@
 }
 
 -(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  return [self objectsAtIndexes:
+  return [NSOrderedSet orderedSetWithArray:[self objectsAtIndexes:
           [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger _, BOOL *__) {
 		return theBlock(obj);
-	}]].SH_toOrderedSet;
+	}]]];
 }
 
 -(instancetype)SH_reject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
