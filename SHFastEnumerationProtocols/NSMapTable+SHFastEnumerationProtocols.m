@@ -183,7 +183,7 @@
 }
 
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-//  [self setDictionary:[self SH_reject:theBlock].mutableCopy];
+  [self setDictionary:[self SH_reject:theBlock].mutableCopy];
   
 }
 
