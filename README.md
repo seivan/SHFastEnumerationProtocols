@@ -157,5 +157,5 @@ twitter: [@seivanheidari](https://twitter.com/seivanheidari)
 
 SHFastEnumerationProtocols is © 2013 [Seivan](http://www.github.com/seivan) and may be freely
 distributed under the [MIT license](http://opensource.org/licenses/MIT).
-See the [`LICENSE.md`](https://github.com/seivan/SHFastEnumerationProtocols/blob/master/LICENSE.md) file.
+See the [`LICENSE.md`](https://github.com/PodFactory/SHFastEnumerationProtocols/blob/master/LICENSE.md) file.
 
