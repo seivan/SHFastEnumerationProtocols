@@ -1,48 +1,43 @@
 //
-//  NSHashTableTests.m
+//  NSSetTests.m
 //  Example
 //
-//  Created by Seivan Heidari on 7/24/13.
+//  Created by Seivan Heidari on 7/25/13.
 //  Copyright (c) 2013 Seivan Heidari. All rights reserved.
 //
 
-
-
 #import "SHFastEnumerationTests.h"
 
-#import "NSHashTable+SHFastEnumerationProtocols.h"
+#import "NSSet+SHFastEnumerationProtocols.h"
 
 
-@interface NSHashTableTests : SenTestCase
+@interface NSSetTests : SenTestCase
 <SHTestsFastEnumerationBlocks,
-SHTestsFastEnumerationProperties,
-SHTestsMutableFastEnumerationBlocks
->
-
-@property(nonatomic,strong) NSHashTable      * subject;
-@property(nonatomic,strong) NSHashTable      * matching;
+SHTestsFastEnumerationProperties>
+@property(nonatomic,strong) NSSet           * subject;
+@property(nonatomic,strong) NSMutableSet    * matching;
 
 @end
 
 
-@interface NSHashTableTests (Private)
+@interface NSSetTests (Private)
 <SHTestsHelpers>
 @end
 
+@interface NSSetTests (Mutable)
+<SHTestsMutableFastEnumerationBlocks>
+@end
 
-@implementation NSHashTableTests
+@implementation NSSetTests
 
 
 -(void)setUp; {
   [super setUp];
   
   
-  self.subject =  [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
+  self.subject =  [NSSet setWithArray:@[@"one", @"1", @"two",@"2", @"three", @"3", @"one", @"1"]];
   
-  for (id obj in @[@"one", @"1", @"two",@"2", @"three", @"3", @"one", @"1"])
-    [self.subject addObject:obj];
-
-  self.matching = [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
+  self.matching = [NSMutableSet set];
 }
 
 -(void)tearDown; {
@@ -70,7 +65,7 @@ SHTestsMutableFastEnumerationBlocks
       return nil;
     else
       return obj;
-  }];
+  }].mutableCopy;
   
   self.subject = [self.subject SH_map:^id(id obj) {
     return obj;
@@ -88,7 +83,7 @@ SHTestsMutableFastEnumerationBlocks
 -(void)testReduce;{
   NSMutableString * expected = @"".mutableCopy;
   for (id obj in self.subject) [expected appendFormat:@"%@", obj];
-
+  
   NSMutableString  * matched = [self.subject SH_reduceValue:@"".mutableCopy withBlock:^id(NSMutableString * memo, id obj) {
     [memo appendFormat:@"%@", obj];
     return memo;
@@ -104,7 +99,7 @@ SHTestsMutableFastEnumerationBlocks
     counter +=1;
     return (counter == self.subject.count);
   }];
-
+  
   
   STAssertEquals(self.subject.count, counter, nil);
   STAssertTrue([self.subject containsObject:value], nil);
@@ -117,7 +112,7 @@ SHTestsMutableFastEnumerationBlocks
   self.matching = [self.subject SH_findAll:^BOOL(id obj) {
     counter +=1;
     return (counter < self.subject.count-1);
-  }];
+  }].mutableCopy;
   
   for (id obj in self.matching) {
     STAssertTrue([self.subject containsObject:obj], nil);
@@ -133,7 +128,7 @@ SHTestsMutableFastEnumerationBlocks
   self.matching = [self.subject SH_reject:^BOOL(id obj) {
     counter +=1;
     return (counter < self.subject.count-1);
-  }];
+  }].mutableCopy;
   
   for (id obj in self.matching) {
     STAssertTrue([self.subject containsObject:obj], nil);
@@ -148,8 +143,10 @@ SHTestsMutableFastEnumerationBlocks
   BOOL testAllTrue = [self.subject SH_all:^BOOL(id obj) {
     return [self.matching containsObject:obj];
   }];
-
-  [self.subject addObject:@"---"];
+  
+  NSMutableSet * subject = self.subject.mutableCopy;
+  [subject addObject:@"---"];
+  self.subject = subject.copy;
   
   BOOL testAllNotAllTrue = [self.subject SH_all:^BOOL(id obj) {
     return [self.matching containsObject:obj];
@@ -163,7 +160,7 @@ SHTestsMutableFastEnumerationBlocks
 
 -(void)testAny;{
   self.matching = self.subject.mutableCopy;
-
+  
   BOOL testAllTrue = [self.subject SH_any:^BOOL(id obj) {
     return [self.matching containsObject:obj];
   }];
@@ -281,6 +278,9 @@ SHTestsMutableFastEnumerationBlocks
 }
 
 
+@end
+
+@implementation NSSetTests (Mutable)
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
 -(void)testModifyMap; {
@@ -294,7 +294,7 @@ SHTestsMutableFastEnumerationBlocks
       return nil;
   }];
   
-
+  
   NSUInteger expectedCount = 1;
   STAssertTrue(self.matching.count < self.subject.count, nil);
   STAssertEquals(self.matching.count, expectedCount, nil);
@@ -302,7 +302,7 @@ SHTestsMutableFastEnumerationBlocks
   for (id obj in self.matching) {
     STAssertTrue([self.subject containsObject:obj], nil);
   }
-
+  
   
   
 }
@@ -326,7 +326,7 @@ SHTestsMutableFastEnumerationBlocks
   for (id obj in self.matching) {
     STAssertTrue([self.subject containsObject:obj], nil);
   }
-
+  
   
   
 }
@@ -357,12 +357,12 @@ SHTestsMutableFastEnumerationBlocks
 @end
 
 
-@implementation NSHashTableTests (Private)
+@implementation NSSetTests (Private)
 -(void)assertMapTableWithMapTable:(NSMapTable *)theMapTable; {
   
   STAssertTrue([theMapTable isKindOfClass:[NSMapTable class]], nil);
   STAssertTrue(theMapTable.count > 0, nil);
-  STAssertTrue(self.subject.count > 0, nil);  
+  STAssertTrue(self.subject.count > 0, nil);
   [self.subject SH_each:^(id obj) {
     [theMapTable.objectEnumerator.allObjects containsObject:obj];
   }];
@@ -377,7 +377,7 @@ SHTestsMutableFastEnumerationBlocks
   [self.subject SH_each:^(id obj) {
     STAssertTrue([theHashTable containsObject:obj], nil);
   }];
-
+  
 }
 
 

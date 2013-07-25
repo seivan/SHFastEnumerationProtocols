@@ -183,31 +183,31 @@
 
 #pragma mark - <SHMutableFastEnumerationBlocks>
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-  NSOrderedSet * orderedSet = self.copy;
+  typeof(self) newSelf = self.copy;
   [self removeAllObjects];
-	[self addObjectsFromArray:[orderedSet SH_map:theBlock].SH_toArray];
+	[self addObjectsFromArray:[newSelf SH_map:theBlock].SH_toArray];
 }
 
 -(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  NSOrderedSet * orderedSet = self.copy;
+  typeof(self) newSelf = self.copy;
   [self removeAllObjects];
-	[self addObjectsFromArray:[orderedSet SH_findAll:theBlock].SH_toArray];
+	[self addObjectsFromArray:[newSelf SH_findAll:theBlock].SH_toArray];
 
 
 }
 
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  NSOrderedSet * orderedSet = self.copy;
+  typeof(self) newSelf = self.copy;
   [self removeAllObjects];
-	[self addObjectsFromArray:[orderedSet SH_reject:theBlock].SH_toArray];
+	[self addObjectsFromArray:[newSelf SH_reject:theBlock].SH_toArray];
 }
 
 #pragma mark - <SHMutableFastEnumerationOrdered>
 
 -(void)SH_modifyReverse; {
-  NSOrderedSet * orderedSet = self.copy;
+  typeof(self) newSelf = self.copy;
   [self removeAllObjects];
-  [self addObjectsFromArray:orderedSet.SH_reverse.SH_toArray];
+  [self addObjectsFromArray:newSelf.SH_reverse.SH_toArray];
 }
 
 

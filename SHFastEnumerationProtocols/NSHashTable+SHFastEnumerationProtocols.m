@@ -8,9 +8,6 @@
 
 #import "NSHashTable+SHFastEnumerationProtocols.h"
 
-
-
-
 @interface NSHashTable (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
 @end
@@ -41,13 +38,13 @@
 }
 
 -(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-  NSHashTable * map = self.copy;
-  [map removeAllObjects];
+  typeof(self) hashTable = self.copy;
+  [hashTable removeAllObjects];
   for (id obj in self) {
     id value = theBlock(obj);
-    if(value) [map addObject:value];
+    if(value) [hashTable addObject:value];
   }
-  return map;
+  return hashTable;
 }
 
 -(id)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; { NSParameterAssert(theBlock);
@@ -71,7 +68,7 @@
 }
 
 -(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  NSHashTable * hashTable = self.copy;
+  typeof(self) hashTable = self.copy;
   [hashTable removeAllObjects];
   for (id obj in self) if(theBlock(obj))[hashTable addObject:obj];
   return hashTable;
@@ -155,26 +152,26 @@
 
 #pragma mark - <SHMutableFastEnumerationBlocks>
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-  NSHashTable * hashTable = self.copy;
+  typeof(self) newSelf = self.copy;
   [self removeAllObjects];
-  for(id obj in [hashTable SH_map:theBlock]) [self addObject:obj];
+  for(id obj in [newSelf SH_map:theBlock]) [self addObject:obj];
 
 
 }
 
 -(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  NSHashTable * hashTable = self.copy;
+  typeof(self) newSelf = self.copy;
   [self removeAllObjects];
-  for (id obj in [hashTable SH_findAll:theBlock]) [self addObject:obj];
+  for (id obj in [newSelf SH_findAll:theBlock]) [self addObject:obj];
 
   
   
 }
 
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  NSHashTable * hashTable = self.copy;
+  typeof(self) newSelf = self.copy;
   [self removeAllObjects];
-  for (id obj in [hashTable SH_reject:theBlock]) [self addObject:obj];
+  for (id obj in [newSelf SH_reject:theBlock]) [self addObject:obj];
 
 }
 

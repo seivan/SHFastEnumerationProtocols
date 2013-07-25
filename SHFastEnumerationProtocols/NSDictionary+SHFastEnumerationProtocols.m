@@ -8,9 +8,6 @@
 
 #import "NSDictionary+SHFastEnumerationProtocols.h"
 
-
-
-
 @interface NSDictionary (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
 @end
@@ -170,7 +167,7 @@
   [self SH_each:^(id obj) {
     NSHashTable * table = [[NSHashTable alloc]
                            initWithOptions:NSPointerFunctionsStrongMemory
-                           capacity:self.count];
+                           capacity:2];
     [table addObject:obj];
     [table addObject:[self objectForKey:obj]];
     [hashTable addObject:table];
