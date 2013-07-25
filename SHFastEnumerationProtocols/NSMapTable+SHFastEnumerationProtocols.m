@@ -40,7 +40,7 @@
 
 
 -(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-  NSMapTable * map = self.copy;
+  typeof(self) map = self.copy;
   [map removeAllObjects];
   for (id key in self) {
     id value = theBlock(key);
@@ -70,7 +70,7 @@
 }
 
 -(instancetype)SH_findAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  NSMapTable * map = self.copy;
+  typeof(self) map = self.copy;
   [map removeAllObjects];
   
   for (id key in self) if(theBlock(key)) [map setObject:[self objectForKey:key] forKey:key];
@@ -174,15 +174,16 @@
 
 #pragma mark - <SHMutableFastEnumerationBlocks>
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
-  [self setDictionary:[self SH_map:theBlock].mutableCopy];
+
+//  [self setDictionary:[self SH_map:theBlock].mutableCopy];
 }
 
 -(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  [self setDictionary:[self SH_findAll:theBlock].mutableCopy];
+//  [self setDictionary:[self SH_findAll:theBlock].mutableCopy];
 }
 
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  [self setDictionary:[self SH_reject:theBlock].mutableCopy];
+//  [self setDictionary:[self SH_reject:theBlock].mutableCopy];
   
 }
 
