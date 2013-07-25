@@ -74,8 +74,9 @@
   NSMutableDictionary * map = [NSMutableDictionary dictionaryWithCapacity:self.count];
 
   [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-    if(theBlock(obj)) [map setObject:obj forKey:key];
+    if(theBlock(key)) [map setObject:obj forKey:key];
   }];
+  
   return map;
 }
 
@@ -84,6 +85,7 @@
 }
 
 -(BOOL)SH_all:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
+
   return [self SH_findAll:theBlock].count == self.count;
 }
 
@@ -148,15 +150,33 @@
 }
 
 -(NSHashTable *)SH_toHashTableWeak; {
-  NSHashTable * hashTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsStrongMemory capacity:self.count];
-  [self SH_each:^(id obj) { [hashTable addObject:obj]; }];
+  NSHashTable * hashTable = [NSHashTable weakObjectsHashTable];
+  
+  [self SH_each:^(id obj) {
+    NSHashTable * table = [NSHashTable weakObjectsHashTable];
+    [table addObject:obj];
+    [table addObject:[self objectForKey:obj]];
+    [hashTable addObject:table];
+    
+  }];
   return hashTable;
+
 }
 
 -(NSHashTable *)SH_toHashTableStrong; {
-  NSHashTable * hashTable = [NSHashTable weakObjectsHashTable];
-  [self SH_each:^(id obj) { [hashTable addObject:obj]; }];
+  NSHashTable * hashTable = [[NSHashTable alloc]
+                             initWithOptions:NSPointerFunctionsStrongMemory
+                             capacity:self.count];
+  [self SH_each:^(id obj) {
+    NSHashTable * table = [[NSHashTable alloc]
+                           initWithOptions:NSPointerFunctionsStrongMemory
+                           capacity:self.count];
+    [table addObject:obj];
+    [table addObject:[self objectForKey:obj]];
+    [hashTable addObject:table];
+  }];
   return hashTable;
+
 }
 
 
@@ -184,8 +204,9 @@
 
 #pragma mark - Private
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable; {
-  NSInteger index = -1;
-  for (id obj in self) [theMapTable setObject:obj forKey:@(index+=1)];
+  [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [theMapTable setObject:obj forKey:key];
+  }];
   return theMapTable;
 }
 

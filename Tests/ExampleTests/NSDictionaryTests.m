@@ -146,14 +146,14 @@ SHTestsFastEnumerationProperties
   
   self.matching = self.subject.mutableCopy;
   BOOL testAllTrue = [self.subject SH_all:^BOOL(id obj) {
-    return !![self.matching objectForKey:obj] ;
+    return [self.matching objectForKey:obj] != nil ;
   }];
   
   NSMutableDictionary * subject =  self.subject.mutableCopy;
   [subject addEntriesFromDictionary:@{@"asd" : @"xxx"}];
   
   BOOL testAllNotAllTrue = [subject SH_all:^BOOL(id obj) {
-    return !![self.matching objectForKey:obj] ;
+    return [self.matching objectForKey:obj] != nil ;
   }];
   
   STAssertTrue(testAllTrue, nil);
@@ -166,17 +166,16 @@ SHTestsFastEnumerationProperties
   self.matching = self.subject.mutableCopy;
   
   BOOL testAllTrue = [self.subject SH_any:^BOOL(id obj) {
-    return !![self.matching objectForKey:obj] ;
+    return [self.matching objectForKey:obj] != nil ;
   }];
   
   
-  [self.matching removeObjectForKey:@"1"];
   BOOL testAllNotAllTrue = [self.subject SH_any:^BOOL(id obj) {
-    return !![self.matching objectForKey:obj] ;
+    return NO ;
   }];
   
   STAssertTrue(testAllTrue, nil);
-  STAssertTrue(testAllNotAllTrue, nil);
+  STAssertFalse(testAllNotAllTrue, nil);
   
   
   
@@ -185,17 +184,17 @@ SHTestsFastEnumerationProperties
 
 -(void)testNone; {
   self.matching = self.subject.mutableCopy;
-  
   BOOL testAllTrue = [self.subject SH_none:^BOOL(id obj) {
-    return NO;
+    return [self.matching objectForKey:obj] == nil ;
   }];
   
-  BOOL testAllFalse = [self.subject SH_none:^BOOL(id obj) {
-    return YES;
+  
+  BOOL testAllNotAllTrue = [self.subject SH_none:^BOOL(id obj) {
+    return [self.matching objectForKey:obj] != nil ;
   }];
   
   STAssertTrue(testAllTrue, nil);
-  STAssertTrue(testAllFalse, nil);
+  STAssertFalse(testAllNotAllTrue, nil);
 
   
   
@@ -217,43 +216,52 @@ SHTestsFastEnumerationProperties
                                            [memo addObject:@[obj, [self.subject objectForKey:obj]]];
                                            return memo;
   }];
-  
-  NSLog(@"------- %@", subject);
-  NSLog(@"--X----- %@", matching);
+
   STAssertTrue([matching isKindOfClass:[NSArray class]], nil);
+  STAssertTrue(matching.count > 0, nil);
   STAssertEqualObjects(subject, matching, nil);
 }
 
 -(void)testToSet; {
-  STAssertTrue([self.subject.SH_toSet isKindOfClass:[NSSet class]], nil);
-  STAssertTrue(self.subject.SH_toSet.count > 0, nil);
+  NSSet * matching = self.subject.SH_toSet;
+  NSSet * subject  = [self.subject SH_reduceValue:[NSMutableSet set]
+                                          withBlock:^id(NSMutableSet * memo, id obj) {
+                                            
+                                            [memo addObject:
+                                             [NSSet setWithArray:@[obj,
+                                                                   [self.subject objectForKey:obj]]
+                                              ]];
+                                            return memo;
+                                          }];
   
-  for (id obj in self.subject.SH_toSet)
-    STAssertNotNil([self.subject objectForKey:obj], nil);
-  
+  STAssertTrue([matching isKindOfClass:[NSSet class]], nil);
+  STAssertTrue(matching.count > 0, nil);
+  STAssertEqualObjects(subject, matching, nil);
 }
 
 -(void)testToOrderedSet; {
-  STAssertTrue([self.subject.SH_toOrderedSet  isKindOfClass:[NSOrderedSet class]], nil);
-  STAssertTrue(self.subject.SH_toOrderedSet.count > 0, nil);
+  NSOrderedSet * matching = self.subject.SH_toOrderedSet;
+  NSOrderedSet * subject  = [self.subject SH_reduceValue:[NSMutableOrderedSet orderedSet]
+                                        withBlock:^id(NSMutableOrderedSet * memo, id obj) {
+                                          
+                                          [memo addObject:
+                                           [NSMutableOrderedSet orderedSetWithArray:@[obj,
+                                            [self.subject objectForKey:obj]]
+                                            ]];
+                                          return memo;
+                                        }];
   
-  [self.subject.SH_toOrderedSet enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *_) {
-//    STAssertNotNil([self.subject objectForKey:value], nil);
-  }];
-  
-  
+  STAssertTrue([matching isKindOfClass:[NSOrderedSet class]], nil);
+  STAssertTrue(matching.count > 0, nil);
+  STAssertEqualObjects(subject, matching, nil);
+
+
 }
 
 -(void)testToDictionary; {
   STAssertTrue([self.subject.SH_toDictionary isKindOfClass:[NSDictionary class]], nil);
   STAssertTrue(self.subject.SH_toDictionary.count > 0, nil);
-  
-  [self.subject.SH_toDictionary enumerateKeysAndObjectsUsingBlock:^(NSNumber * key, id obj, BOOL *stop) {
-//    [self.subject containsObject:obj];
-//    STAssertNotNil([self.subject objectForKey:value], nil);
-    STAssertNotNil(self.subject.objectEnumerator.allObjects[key.integerValue], nil);
-  }];
-  
+    
 }
 
 -(void)testToMapTableWeakToWeak; {
@@ -274,7 +282,8 @@ SHTestsFastEnumerationProperties
 }
 
 -(void)testToHashTableWeak; {
-  [self assertHashTableWithMapTable:self.subject.SH_toHashTableWeak];
+  // Need to figure out how to test weak references.
+//  [self assertHashTableWithMapTable:self.subject.SH_toHashTableWeak];
 }
 
 -(void)testToHashTableStrong; {
@@ -302,9 +311,7 @@ SHTestsFastEnumerationProperties
   STAssertTrue(self.matching.count < self.subject.count, nil);
   STAssertEquals(self.matching.count, expectedCount, nil);
   
-//  for (id obj in self.matching) {
-//    STAssertNotNil([self.subject objectForKey:value], nil);
-//  }
+  for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);
   
   
   
@@ -326,10 +333,7 @@ SHTestsFastEnumerationProperties
   STAssertTrue(self.matching.count < self.subject.count, nil);
   STAssertEquals(self.matching.count, expectedCount, nil);
   
-//  for (id obj in self.matching) {
-//    STAssertNotNil([self.subject objectForKey:value], nil);
-//  }
-  
+  for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);  
   
   
 }
@@ -351,37 +355,46 @@ SHTestsFastEnumerationProperties
   STAssertTrue(self.matching.count < self.subject.count, nil);
   STAssertEquals(self.matching.count, self.subject.count-expectedCount, nil);
   
-  for (id obj in self.matching) {
-//    STAssertNotNil([self.subject objectForKey:value], nil);
-  }
+  for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);
 }
 
 
 @end
 
 
-@implementation NSDictionary (Private)
-//-(void)assertMapTableWithMapTable:(NSMapTable *)theMapTable; {
-//  
-//  STAssertTrue([theMapTable isKindOfClass:[NSMapTable class]], nil);
-//  STAssertTrue(theMapTable.count > 0, nil);
-//  STAssertTrue(self.subject.count > 0, nil);
-//  [self.subject SH_each:^(id obj) {
-//    [theMapTable.objectEnumerator.allObjects containsObject:obj];
-//  }];
-//  
-//}
-//
-//
-//-(void)assertHashTableWithMapTable:(NSHashTable *)theHashTable; {
-//  STAssertTrue([theHashTable isKindOfClass:[NSHashTable class]], nil);
-//  STAssertTrue(theHashTable.count > 0, nil);
-//  STAssertTrue(self.subject.count > 0, nil);
-//  [self.subject SH_each:^(id obj) {
-//    STAssertTrue([theHashTable containsObject:obj], nil);
-//  }];
-//  
-//}
+@implementation NSDictionaryTests (Private)
+-(void)assertMapTableWithMapTable:(NSMapTable *)theMapTable; {
+  
+  STAssertTrue([theMapTable isKindOfClass:[NSMapTable class]], nil);
+  STAssertTrue(theMapTable.count > 0, nil);
+  STAssertTrue(self.subject.count > 0, nil);
+  [self.subject SH_each:^(id obj) {
+    STAssertNotNil([theMapTable objectForKey:obj], nil);
+  }];
+  
+}
+
+
+-(void)assertHashTableWithMapTable:(NSHashTable *)theHashTable; {
+  NSHashTable * subject  = [self.subject SH_reduceValue:[[NSHashTable alloc]
+                                                         initWithOptions:NSPointerFunctionsStrongMemory
+                                                         capacity:20]
+                                        withBlock:^id(NSHashTable * memo, id obj) {
+                                          NSHashTable * table = [[NSHashTable alloc]
+                                                                     initWithOptions:NSPointerFunctionsStrongMemory
+                                                                     capacity:20];
+
+
+                                          [table addObject:obj];
+                                          [table addObject:[self.subject objectForKey:obj]];
+                                          [memo addObject:table];
+                                          return memo;
+                                        }];
+  
+  STAssertTrue([theHashTable isKindOfClass:[NSHashTable class]], nil);
+  STAssertTrue(theHashTable.count > 0, nil);
+  STAssertEqualObjects(subject, theHashTable, nil);
+}
 
 
 @end
