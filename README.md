@@ -7,7 +7,9 @@ Overview
 --------
 NSFastEnumeration helpers and enumeration blocks through a protocol on foundation collection classes.
 Helpers for both keyed, index and unordered collection objects.
+Converting to other collection classes through dot notation.
 Block based callers for enumeration. 
+Tested and ready. 
 
 * NSArray and NSMutableArray
 * NSOrderedSet and NSMutableOrderedSet
@@ -16,11 +18,13 @@ Block based callers for enumeration.
 * NSDictionary and NSMutableDictionary 
 * NSMapTable
 
+TODO: NSIndexSet, NSMutableIndexSet and NSEnumerator. 
+
 
 API
 ----------
 
-#### [SHFastEnumerationProtocols](https://github.com/seivan/SHFastEnumerationProtocols#api-1)
+#### [SHFastEnumerationProtocols](https://github.com/PodFactory/SHFastEnumerationProtocols#api-1)
 
 
 
