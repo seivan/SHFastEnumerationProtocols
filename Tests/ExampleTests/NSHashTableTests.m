@@ -221,7 +221,7 @@ SHTestsMutableFastEnumerationBlocks
   NSArray     * subject  = self.subject.allObjects;
   
   STAssertTrue([matching isKindOfClass:[NSArray class]], nil);
-  STAssertEqualObjects(subject, self.matching, nil);
+  STAssertEqualObjects(subject, matching, nil);
 }
 
 -(void)testToSet; {
