@@ -6,18 +6,15 @@
 //  Copyright (c) 2013 Seivan Heidari. All rights reserved.
 //
 
-#import "NSHashTableTests.h"
+
 
 #import "SHFastEnumerationTests.h"
 
 #import "NSHashTable+SHFastEnumerationProtocols.h"
 
-@interface NSHashTableTests (Private)
-<SHTestsHelpers>
-@end
 
 
-@interface NSHashTableTests ()
+@interface NSHashTableTests : SenTestCase
 <SHTestsFastEnumerationBlocks,
 SHTestsFastEnumerationProperties,
 SHTestsMutableFastEnumerationBlocks
@@ -26,6 +23,11 @@ SHTestsMutableFastEnumerationBlocks
 @property(nonatomic,strong) NSHashTable      * subject;
 @property(nonatomic,strong) NSHashTable      * matching;
 
+@end
+
+
+@interface NSHashTableTests (Private)
+<SHTestsHelpers>
 @end
 
 
@@ -215,10 +217,10 @@ SHTestsMutableFastEnumerationBlocks
 }
 
 -(void)testToArray; {
-  self.matching = self.subject.SH_toArray.copy;
-  NSArray * subject = self.subject.allObjects;
+  NSArray     * matching = self.subject.SH_toArray;
+  NSArray     * subject  = self.subject.allObjects;
   
-  STAssertTrue([self.matching isKindOfClass:[NSArray class]], nil);
+  STAssertTrue([matching isKindOfClass:[NSArray class]], nil);
   STAssertEqualObjects(subject, self.matching, nil);
 }
 

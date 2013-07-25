@@ -9,15 +9,13 @@
 
 #import "SHFastEnumerationTests.h"
 
-#import "NSArrayTests.h"
-
 #import "NSArray+SHFastEnumerationProtocols.h"
-@interface NSArrayTests (Private)
-<SHTestsHelpers>
-@end
 
 
-@interface NSArrayTests ()
+
+
+
+@interface NSArrayTests : SenTestCase
 <SHTestsFastEnumerationBlocks,
 SHTestsFastEnumerationProperties,
 SHTestsFastEnumerationOrderedBlocks,
@@ -33,6 +31,11 @@ SHTestsFastEnumerationOrdered>
 <SHTestsMutableFastEnumerationBlocks,
 SHTestsMutableFastEnumerationOrdered>
 @end
+
+@interface NSArrayTests (Private)
+<SHTestsHelpers>
+@end
+
 
 @implementation NSArrayTests
 

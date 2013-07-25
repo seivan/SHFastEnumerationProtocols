@@ -8,16 +8,11 @@
 
 #import "SHFastEnumerationTests.h"
 
-#import "NSOrderedSetTests.h"
-
 #import "NSOrderedSet+SHFastEnumerationProtocols.h"
 
-@interface NSOrderedSetTests (Private)
-<SHTestsHelpers>
-@end
 
 
-@interface NSOrderedSetTests ()
+@interface NSOrderedSetTests : SenTestCase
 <SHTestsFastEnumerationBlocks,
 SHTestsFastEnumerationProperties,
 SHTestsFastEnumerationOrderedBlocks,
@@ -32,6 +27,10 @@ SHTestsFastEnumerationOrdered>
 @interface NSOrderedSetTests (Mutable)
 <SHTestsMutableFastEnumerationBlocks,
 SHTestsMutableFastEnumerationOrdered>
+@end
+
+@interface NSOrderedSetTests (Private)
+<SHTestsHelpers>
 @end
 
 @implementation NSOrderedSetTests
@@ -221,12 +220,13 @@ SHTestsMutableFastEnumerationOrdered>
   BOOL isEmpty = self.matching.count == 0;
   STAssertEquals(isEmpty, self.matching.SH_isEmpty, nil);
 }
--(void)testToArray; {
-  self.matching = self.subject.SH_toArray.copy;
-  NSArray * subject = self.subject.array;
 
-  STAssertTrue([self.matching isKindOfClass:[NSArray class]], nil);
-  STAssertEqualObjects(subject, self.matching, nil);
+-(void)testToArray; {
+  NSArray * matching = self.subject.SH_toArray;
+  NSArray * subject  = self.subject.array;
+
+  STAssertTrue([matching isKindOfClass:[NSArray class]], nil);
+  STAssertEqualObjects(subject, matching, nil);
 }
 
 -(void)testToSet; {

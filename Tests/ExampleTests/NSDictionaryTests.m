@@ -6,18 +6,15 @@
 //  Copyright (c) 2013 Seivan Heidari. All rights reserved.
 //
 
-#import "NSDictionaryTests.h"
+
 
 #import "SHFastEnumerationTests.h"
 
 #import "NSDictionary+SHFastEnumerationProtocols.h"
 
-@interface NSDictionaryTests (Private)
-<SHTestsHelpers>
-@end
 
 
-@interface NSDictionaryTests ()
+@interface NSDictionaryTests : SenTestCase
 <SHTestsFastEnumerationBlocks,
 SHTestsFastEnumerationProperties
 >
@@ -27,9 +24,15 @@ SHTestsFastEnumerationProperties
 
 @end
 
+
 @interface NSDictionaryTests (Mutable)
 <SHTestsMutableFastEnumerationBlocks>
 @end
+
+@interface NSDictionaryTests (Private)
+<SHTestsHelpers>
+@end
+
 
 @implementation NSDictionaryTests
 
@@ -143,13 +146,14 @@ SHTestsFastEnumerationProperties
   
   self.matching = self.subject.mutableCopy;
   BOOL testAllTrue = [self.subject SH_all:^BOOL(id obj) {
-    return [self.matching containsObject:obj];
+    return !![self.matching objectForKey:obj] ;
   }];
   
-  [self.subject addObject:@"---"];
+  NSMutableDictionary * subject =  self.subject.mutableCopy;
+  [subject addEntriesFromDictionary:@{@"asd" : @"xxx"}];
   
-  BOOL testAllNotAllTrue = [self.subject SH_all:^BOOL(id obj) {
-    return [self.matching containsObject:obj];
+  BOOL testAllNotAllTrue = [subject SH_all:^BOOL(id obj) {
+    return !![self.matching objectForKey:obj] ;
   }];
   
   STAssertTrue(testAllTrue, nil);
@@ -162,15 +166,13 @@ SHTestsFastEnumerationProperties
   self.matching = self.subject.mutableCopy;
   
   BOOL testAllTrue = [self.subject SH_any:^BOOL(id obj) {
-    return [self.matching containsObject:obj];
+    return !![self.matching objectForKey:obj] ;
   }];
   
   
-  NSMutableArray * matching = self.matching.SH_toArray.mutableCopy;
-  [matching removeLastObject];
-  [matching removeLastObject];
+  [self.matching removeObjectForKey:@"1"];
   BOOL testAllNotAllTrue = [self.subject SH_any:^BOOL(id obj) {
-    return [matching containsObject:obj];
+    return !![self.matching objectForKey:obj] ;
   }];
   
   STAssertTrue(testAllTrue, nil);
@@ -192,14 +194,9 @@ SHTestsFastEnumerationProperties
     return YES;
   }];
   
-  self.matching = @[].mutableCopy;
-  
-  if(testAllTrue) [self.matching addObject:@(1)];
-  if(testAllFalse == NO) [self.matching addObject:@(2)];
-  
-  NSArray * matching = (NSArray * )self.matching;
-  STAssertTrue([matching containsObject:@(1)], nil);
-  STAssertTrue([matching containsObject:@(2)], nil);
+  STAssertTrue(testAllTrue, nil);
+  STAssertTrue(testAllFalse, nil);
+
   
   
 }
@@ -213,8 +210,12 @@ SHTestsFastEnumerationProperties
 }
 
 -(void)testToArray; {
-  self.matching = self.subject.SH_toArray.copy;
-  NSArray * subject = self.subject.allObjects;
+  NSArray * matching = self.subject.SH_toArray;
+  NSArray * subject  = [self.subject SH_reduceValue:@[].mutableCopy
+                                         withBlock:^id(NSMutableArray * memo, id obj) {
+                                           
+                                           [memo addObject:@[obj, self.subject ]]];
+  }];
   
   STAssertTrue([self.matching isKindOfClass:[NSArray class]], nil);
   STAssertEqualObjects(subject, self.matching, nil);
