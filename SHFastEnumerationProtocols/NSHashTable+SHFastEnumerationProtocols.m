@@ -8,9 +8,6 @@
 
 #import "NSHashTable+SHFastEnumerationProtocols.h"
 
-
-
-
 @interface NSHashTable (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
 @end

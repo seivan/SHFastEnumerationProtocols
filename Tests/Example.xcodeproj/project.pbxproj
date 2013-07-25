@@ -21,6 +21,7 @@
 		22A5DB22179F85DF00AD6E43 /* NSHashTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DB21179F85DF00AD6E43 /* NSHashTableTests.m */; };
 		22A5DB2517A0B2D200AD6E43 /* NSDictionaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DB2417A0B2D100AD6E43 /* NSDictionaryTests.m */; };
 		22A5DB2817A0E2EC00AD6E43 /* NSMapTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DB2717A0E2EC00AD6E43 /* NSMapTableTests.m */; };
+		22A5DB2B17A0E6C500AD6E43 /* NSSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DB2A17A0E6C500AD6E43 /* NSSetTests.m */; };
 		D147EAD64893494F82C56796 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31338839035B47748125E9B3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		22A5DB21179F85DF00AD6E43 /* NSHashTableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHashTableTests.m; sourceTree = "<group>"; };
 		22A5DB2417A0B2D100AD6E43 /* NSDictionaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryTests.m; sourceTree = "<group>"; };
 		22A5DB2717A0E2EC00AD6E43 /* NSMapTableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMapTableTests.m; sourceTree = "<group>"; };
+		22A5DB2A17A0E6C500AD6E43 /* NSSetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSetTests.m; sourceTree = "<group>"; };
 		31338839035B47748125E9B3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B64FE6F42C4DAE8451792B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 				22A5DB21179F85DF00AD6E43 /* NSHashTableTests.m */,
 				22A5DB2417A0B2D100AD6E43 /* NSDictionaryTests.m */,
 				22A5DB2717A0E2EC00AD6E43 /* NSMapTableTests.m */,
+				22A5DB2A17A0E6C500AD6E43 /* NSSetTests.m */,
 				22A5DAD11793A30900AD6E43 /* Supporting Files */,
 			);
 			path = ExampleTests;
@@ -326,6 +329,7 @@
 				22A5DB22179F85DF00AD6E43 /* NSHashTableTests.m in Sources */,
 				22A5DB2517A0B2D200AD6E43 /* NSDictionaryTests.m in Sources */,
 				22A5DB2817A0E2EC00AD6E43 /* NSMapTableTests.m in Sources */,
+				22A5DB2B17A0E6C500AD6E43 /* NSSetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
