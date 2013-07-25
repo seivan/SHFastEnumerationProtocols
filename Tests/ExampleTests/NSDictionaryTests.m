@@ -1,47 +1,45 @@
 //
-//  NSHashTableTests.m
+//  NSDictionaryTests.m
 //  Example
 //
-//  Created by Seivan Heidari on 7/24/13.
+//  Created by Seivan Heidari on 7/25/13.
 //  Copyright (c) 2013 Seivan Heidari. All rights reserved.
 //
 
-#import "NSHashTableTests.h"
+#import "NSDictionaryTests.h"
 
 #import "SHFastEnumerationTests.h"
 
-#import "NSHashTable+SHFastEnumerationProtocols.h"
+#import "NSDictionary+SHFastEnumerationProtocols.h"
 
-@interface NSHashTableTests (Private)
+@interface NSDictionaryTests (Private)
 <SHTestsHelpers>
 @end
 
 
-@interface NSHashTableTests ()
+@interface NSDictionaryTests ()
 <SHTestsFastEnumerationBlocks,
-SHTestsFastEnumerationProperties,
-SHTestsMutableFastEnumerationBlocks
+SHTestsFastEnumerationProperties
 >
 
-@property(nonatomic,strong) NSHashTable      * subject;
-@property(nonatomic,strong) NSHashTable      * matching;
+@property(nonatomic,strong) NSDictionary        * subject;
+@property(nonatomic,strong) NSMutableDictionary * matching;
 
 @end
 
+@interface NSDictionaryTests (Mutable)
+<SHTestsMutableFastEnumerationBlocks>
+@end
 
-@implementation NSHashTableTests
+@implementation NSDictionaryTests
 
 
 -(void)setUp; {
   [super setUp];
-  
-  
-  self.subject =  [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
-  
-  for (id obj in @[@"one", @"1", @"two",@"2", @"three", @"3", @"one", @"1"])
-    [self.subject addObject:obj];
 
-  self.matching = [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
+  self.subject = @{@"one" : @"1", @"two" : @"2", @"three" : @"3", @"oneX" : @"1X"};
+  
+  self.matching = @{}.mutableCopy;
 }
 
 -(void)tearDown; {
@@ -87,7 +85,7 @@ SHTestsMutableFastEnumerationBlocks
 -(void)testReduce;{
   NSMutableString * expected = @"".mutableCopy;
   for (id obj in self.subject) [expected appendFormat:@"%@", obj];
-
+  
   NSMutableString  * matched = [self.subject SH_reduceValue:@"".mutableCopy withBlock:^id(NSMutableString * memo, id obj) {
     [memo appendFormat:@"%@", obj];
     return memo;
@@ -103,7 +101,7 @@ SHTestsMutableFastEnumerationBlocks
     counter +=1;
     return (counter == self.subject.count);
   }];
-
+  
   
   STAssertEquals(self.subject.count, counter, nil);
   STAssertTrue([self.subject containsObject:value], nil);
@@ -147,7 +145,7 @@ SHTestsMutableFastEnumerationBlocks
   BOOL testAllTrue = [self.subject SH_all:^BOOL(id obj) {
     return [self.matching containsObject:obj];
   }];
-
+  
   [self.subject addObject:@"---"];
   
   BOOL testAllNotAllTrue = [self.subject SH_all:^BOOL(id obj) {
@@ -162,7 +160,7 @@ SHTestsMutableFastEnumerationBlocks
 
 -(void)testAny;{
   self.matching = self.subject.mutableCopy;
-
+  
   BOOL testAllTrue = [self.subject SH_any:^BOOL(id obj) {
     return [self.matching containsObject:obj];
   }];
@@ -279,7 +277,9 @@ SHTestsMutableFastEnumerationBlocks
   [self assertHashTableWithMapTable:self.subject.SH_toHashTableStrong];
 }
 
+@end
 
+@implementation NSDictionaryTests (Mutable)
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
 -(void)testModifyMap; {
@@ -293,7 +293,7 @@ SHTestsMutableFastEnumerationBlocks
       return nil;
   }];
   
-
+  
   NSUInteger expectedCount = 1;
   STAssertTrue(self.matching.count < self.subject.count, nil);
   STAssertEquals(self.matching.count, expectedCount, nil);
@@ -301,7 +301,7 @@ SHTestsMutableFastEnumerationBlocks
   for (id obj in self.matching) {
     STAssertTrue([self.subject containsObject:obj], nil);
   }
-
+  
   
   
 }
@@ -325,7 +325,7 @@ SHTestsMutableFastEnumerationBlocks
   for (id obj in self.matching) {
     STAssertTrue([self.subject containsObject:obj], nil);
   }
-
+  
   
   
 }
@@ -361,7 +361,7 @@ SHTestsMutableFastEnumerationBlocks
   
   STAssertTrue([theMapTable isKindOfClass:[NSMapTable class]], nil);
   STAssertTrue(theMapTable.count > 0, nil);
-  STAssertTrue(self.subject.count > 0, nil);  
+  STAssertTrue(self.subject.count > 0, nil);
   [self.subject SH_each:^(id obj) {
     [theMapTable.objectEnumerator.allObjects containsObject:obj];
   }];
@@ -376,7 +376,7 @@ SHTestsMutableFastEnumerationBlocks
   [self.subject SH_each:^(id obj) {
     STAssertTrue([theHashTable containsObject:obj], nil);
   }];
-
+  
 }
 
 

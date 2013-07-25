@@ -2,7 +2,6 @@
 
 typedef void (^SHIteratorBlock)(id obj);
 typedef void (^SHIteratorWithIndexBlock)(id obj, NSUInteger index) ;
-typedef void (^BKIteratorWithValueBlock)(id key, id value);
 
 typedef id (^SHIteratorReturnIdBlock)(id obj);
 typedef id (^SHIteratorReduceBlock)(id memo, id obj);
