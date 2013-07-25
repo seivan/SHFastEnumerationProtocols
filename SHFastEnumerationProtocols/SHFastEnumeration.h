@@ -1,5 +1,5 @@
 
-
+#pragma mark - Block Definitions
 typedef void (^SHIteratorBlock)(id obj);
 typedef void (^SHIteratorWithIndexBlock)(id obj, NSUInteger index) ;
 

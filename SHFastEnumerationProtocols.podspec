@@ -7,9 +7,17 @@ Pod::Spec.new do |s|
   source_files   = "#{name}/**/*.{h,m}"
 
   s.version      = version
-  s.summary      = "Blocks for NSFastEnumeration"
+  s.summary      = "NSFastEnumeration helpers and enumeration blocks through a protocol on foundation collection classes."
   s.description  = <<-DESC
-  --------------------------------
+                        Helpers for both keyed, index and unordered collection objects.
+                        Block based callers for enumeration. 
+
+                      * NSArray and NSMutableArray
+                      * NSOrderedSet and NSMutableOrderedSet
+                      * NSSet, NSMutableSet and NSCountedset
+                      * NSHashTable 
+                      * NSDictionary and NSMutableDictionary
+                      * NSMapTable
                     DESC
 
   s.homepage     = url
@@ -19,7 +27,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => git_url, :tag => version}
   
   
-  #s.platform  = :ios, "6.0"
   s.ios.deployment_target = "6.0"
   s.osx.deployment_target = "10.8"
 
