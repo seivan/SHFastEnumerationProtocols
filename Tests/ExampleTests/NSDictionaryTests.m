@@ -52,7 +52,7 @@ SHTestsFastEnumerationProperties
 #pragma mark - <SHTestsFastEnumerationBlocks>
 -(void)testEach;{
   [self.subject SH_each:^(id obj) {
-    [self.matching addObject:obj];
+    [self.matching setObject:[self.subject objectForKey:obj] forKey:obj];
   }];
   
   STAssertEqualObjects(self.subject, self.matching, nil);
@@ -67,7 +67,7 @@ SHTestsFastEnumerationProperties
       return nil;
     else
       return obj;
-  }];
+  }].mutableCopy;
   
   self.subject = [self.subject SH_map:^id(id obj) {
     return obj;
@@ -77,8 +77,7 @@ SHTestsFastEnumerationProperties
   STAssertTrue(self.matching.count < self.subject.count, nil);
   STAssertFalse(self.matching.SH_isEmpty, nil);
   
-  for (id obj in self.matching)
-    STAssertTrue([self.subject containsObject:obj], nil);
+  for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);
   
 }
 
@@ -86,11 +85,15 @@ SHTestsFastEnumerationProperties
   NSMutableString * expected = @"".mutableCopy;
   for (id obj in self.subject) [expected appendFormat:@"%@", obj];
   
+  NSMutableArray * keys = @[].mutableCopy;
   NSMutableString  * matched = [self.subject SH_reduceValue:@"".mutableCopy withBlock:^id(NSMutableString * memo, id obj) {
+    [keys addObject:obj];
     [memo appendFormat:@"%@", obj];
     return memo;
   }];
   
+  for (id obj in keys) STAssertNotNil([self.subject objectForKey:obj], nil);
+
   STAssertEqualObjects(expected, matched, nil);
 }
 
@@ -104,7 +107,7 @@ SHTestsFastEnumerationProperties
   
   
   STAssertEquals(self.subject.count, counter, nil);
-  STAssertTrue([self.subject containsObject:value], nil);
+  STAssertNotNil([self.subject objectForKey:value], nil);
   
 }
 
@@ -114,11 +117,10 @@ SHTestsFastEnumerationProperties
   self.matching = [self.subject SH_findAll:^BOOL(id obj) {
     counter +=1;
     return (counter < self.subject.count-1);
-  }];
+  }].mutableCopy;
   
-  for (id obj in self.matching) {
-    STAssertTrue([self.subject containsObject:obj], nil);
-  }
+  for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);
+
   STAssertTrue(self.matching.count > 0, nil);
   STAssertTrue(self.matching.count < self.subject.count-1, nil);
   
@@ -130,11 +132,9 @@ SHTestsFastEnumerationProperties
   self.matching = [self.subject SH_reject:^BOOL(id obj) {
     counter +=1;
     return (counter < self.subject.count-1);
-  }];
+  }].mutableCopy;
   
-  for (id obj in self.matching) {
-    STAssertTrue([self.subject containsObject:obj], nil);
-  }
+  for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);
   STAssertTrue(self.matching.count > 0, nil);
   STAssertTrue(self.matching.count < self.subject.count-1, nil);
 }
