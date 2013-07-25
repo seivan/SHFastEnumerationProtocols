@@ -174,16 +174,26 @@
 
 #pragma mark - <SHMutableFastEnumerationBlocks>
 -(void)SH_modifyMap:(SHIteratorReturnIdBlock)theBlock; { NSParameterAssert(theBlock);
+  typeof(self) newSelf = self.copy;
+  [self removeAllObjects];
+  for(id obj in [newSelf SH_map:theBlock]) [self setObject:[newSelf objectForKey:obj] forKey:obj];
 
-//  [self setDictionary:[self SH_map:theBlock].mutableCopy];
+
 }
 
 -(void)SH_modifyFindAll:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-//  [self setDictionary:[self SH_findAll:theBlock].mutableCopy];
+  typeof(self) newSelf = self.copy;
+  [self removeAllObjects];
+  for(id obj in [newSelf SH_findAll:theBlock]) [self setObject:[newSelf objectForKey:obj] forKey:obj];
+
+
 }
 
 -(void)SH_modifyReject:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
-  [self setDictionary:[self SH_reject:theBlock].mutableCopy];
+  typeof(self) newSelf = self.copy;
+  [self removeAllObjects];
+  for(id obj in [newSelf SH_reject:theBlock]) [self setObject:[newSelf objectForKey:obj] forKey:obj];
+
   
 }
 
