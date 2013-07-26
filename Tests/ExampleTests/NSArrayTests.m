@@ -278,12 +278,48 @@ SHTestsMutableFastEnumerationOrdered>
 }
 
 -(void)testToHashTableWeak; {
-
+  [self assertHashTableWithMapTable:self.subject.SH_toHashTableWeak];
 }
 
 -(void)testToHashTableStrong; {
+  [self assertHashTableWithMapTable:self.subject.SH_toHashTableStrong];
+}
+
+-(void)testAvg; {
+  self.matching = @[@(0),@(1),@(2),@(3),@(4),@(5)].mutableCopy;
+  self.subject  = @[@"0",@"1",@"2",@"3",@"4",@"5"];
+  STAssertEqualObjects([self.subject valueForKeyPath:@"@avg.self"],
+                       self.matching.SH_collectionAvg, nil);
+  
+
+}
+
+-(void)testSum; {
+  self.matching = @[@(0),@(1),@(2),@(3),@(4),@(5)].mutableCopy;
+  self.subject  = @[@"0",@"1",@"2",@"3",@"4",@"5"];
+  STAssertEqualObjects([self.subject valueForKeyPath:@"@sum.self"],
+                       self.matching.SH_collectionSum, nil);
+
   
 }
+
+-(void)testMax; {
+  self.matching = @[@(0),@(1),@(2),@(3),@(4),@(5)].mutableCopy;
+  self.subject  = @[@"0",@"1",@"2",@"3",@"4",@"5"];
+  
+  STAssertEqualObjects([self.subject valueForKeyPath:@"@max.self"], self.subject.SH_collectionMax, nil);
+  STAssertEqualObjects([self.matching valueForKeyPath:@"@max.self"], self.matching.SH_collectionMax, nil);
+
+}
+
+-(void)testMin; {
+  self.matching = @[@(0),@(1),@(2),@(3),@(4),@(5)].mutableCopy;
+  self.subject  = @[@"0",@"1",@"2",@"3",@"4",@"5"];
+  
+  STAssertEqualObjects([self.subject valueForKeyPath:@"@min.self"], self.subject.SH_collectionMin, nil);
+  STAssertEqualObjects([self.matching valueForKeyPath:@"@min.self"], self.matching.SH_collectionMin, nil);
+}
+
 
 #pragma mark - <SHTestsFastEnumerationOrderedBlocks>
 -(void)testEachWithIndex;{

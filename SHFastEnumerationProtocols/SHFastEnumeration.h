@@ -43,6 +43,13 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 
 @property(nonatomic,readonly) NSHashTable  * SH_toHashTableWeak;
 @property(nonatomic,readonly) NSHashTable  * SH_toHashTableStrong;
+
+//https://gist.github.com/seivan/6086183
+@property(nonatomic,readonly) NSDecimalNumber  * SH_collectionAvg;
+@property(nonatomic,readonly) NSDecimalNumber  * SH_collectionSum;
+@property(nonatomic,readonly) id                 SH_collectionMax;
+@property(nonatomic,readonly) id                 SH_collectionMin;
+
 @end
 
 #pragma mark - <SHFastEnumerationOrderedBlocks>

@@ -30,7 +30,27 @@
 @implementation SHAppDelegate
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification;{
+  //NSArray * matching = @[@(0),@(1),@(2),@(3),@(4),@(5)];
+  NSHashTable * matching =  [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
   
+
+  for (id obj in @[@"asd",@(1),@(2),@(3),@(4),@(5)])
+    [matching addObject:obj];
+
+//  NSLog(@"%@", [@[@"asd",@(1),@(2),@(3),@(4),@(5)] valueForKeyPath:@"@avg.self"]);
+  @try {
+    NSLog(@"%@", [@[@"asd",@(1),@(2),@(3),@(4),@(5)] valueForKeyPath:@"@sum.self"]);
+  }
+  @catch (NSException *exception) {
+    NSLog(@"EXCEPTION: %@", exception);
+  }
+  @finally {
+    NSLog(@"FINALLLY");
+  }
+  
+//  NSLog(@"%@ ---- %@", [matching valueForKeyPath:@"@avg.self"], matching.SH_collectionAvg);
+  
+
 }
 
 @end

@@ -290,6 +290,22 @@ SHTestsFastEnumerationProperties
   [self assertHashTableWithMapTable:self.subject.SH_toHashTableStrong];
 }
 
+
+-(void)testAvg; {
+}
+
+-(void)testSum; {
+  
+}
+
+-(void)testMax; {
+  
+}
+
+-(void)testMin; {
+  
+}
+
 @end
 
 @implementation NSDictionaryTests (Mutable)

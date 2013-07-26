@@ -8,6 +8,8 @@
 
 #import "NSArray+SHFastEnumerationProtocols.h"
 
+#import "SHCommonEnumerationOperation.h"
+
 @interface NSArray (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
 @end
@@ -148,6 +150,21 @@
   return hashTable;
 }
 
+-(NSDecimalNumber *)SH_collectionAvg; {
+  return [SHCommonEnumerationOperation avgForEnumeration:self];
+}
+
+-(NSDecimalNumber  *) SH_collectionSum; {
+  return [SHCommonEnumerationOperation sumForEnumeration:self];
+}
+
+-(id)SH_collectionMax; {
+  return [SHCommonEnumerationOperation maxForEnumeration:self];
+}
+
+-(id)SH_collectionMin; {
+  return [SHCommonEnumerationOperation minForEnumeration:self];
+}
 
 
 #pragma mark - <SHFastEnumerationOrderedBlocks>

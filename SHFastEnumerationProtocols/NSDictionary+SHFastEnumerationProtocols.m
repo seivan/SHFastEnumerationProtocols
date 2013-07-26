@@ -8,6 +8,8 @@
 
 #import "NSDictionary+SHFastEnumerationProtocols.h"
 
+#import "SHCommonEnumerationOperation.h"
+
 @interface NSDictionary (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
 @end
@@ -175,6 +177,23 @@
   return hashTable;
 
 }
+
+-(NSDecimalNumber *)SH_collectionAvg; {
+  return [self valueForKeyPath:@"@avg.self"];
+}
+
+-(NSDecimalNumber  *) SH_collectionSum; {
+  return [self valueForKeyPath:@"@sum.self"];
+}
+
+-(id)SH_collectionMax; {
+  return [self valueForKeyPath:@"@max.self"];
+}
+
+-(id)SH_collectionMin; {
+  return [self valueForKeyPath:@"@min.self"];
+}
+
 
 
 @end
