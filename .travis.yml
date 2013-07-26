@@ -1,3 +1,3 @@
 language: objective-c
-before_install:
-    - cd Tests
+xcode_workspace: Tests/Example.xcworkspace
+xcode_scheme: Example
