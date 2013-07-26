@@ -294,6 +294,38 @@ SHTestsFastEnumerationProperties
 }
 
 
+-(void)testAvg; {
+  [self.matching setObject:@"1" forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+  
+  STAssertEqualObjects(self.matching.SH_collectionAvg, @(2), nil);
+  
+}
+
+-(void)testSum; {
+  [self.matching setObject:@"1" forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+
+  STAssertEqualObjects(self.matching.SH_collectionSum, @(4), nil);
+  
+}
+
+-(void)testMax; {
+  [self.matching setObject:@(1) forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+
+  STAssertEqualObjects(self.matching.SH_collectionMax, @(3), nil);
+  
+}
+
+-(void)testMin; {
+  [self.matching setObject:@(1) forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+
+  STAssertEqualObjects(self.matching.SH_collectionMin, @(1), nil);
+  
+}
+
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
 -(void)testModifyMap; {
   __block NSUInteger counter = 0;

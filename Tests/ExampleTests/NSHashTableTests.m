@@ -280,6 +280,66 @@ SHTestsMutableFastEnumerationBlocks
   [self assertHashTableWithMapTable:self.subject.SH_toHashTableStrong];
 }
 
+-(void)testAvg; {
+  [self.subject removeAllObjects];
+  
+  for (id obj in @[@(0),@(1),@(2),@(3),@(4),@(5)])
+    [self.matching addObject:obj];
+
+  for (id obj in @[@"0",@"1",@"2",@"3",@"4",@"5"])
+    [self.subject addObject:obj];
+  
+
+  STAssertEqualObjects(@(2.5),
+                       self.matching.SH_collectionAvg, nil);
+  STAssertEqualObjects(@(2.5),
+                       self.subject.SH_collectionAvg, nil);
+
+}
+
+-(void)testSum; {
+  [self.subject removeAllObjects];
+  
+  for (id obj in @[@(0),@(1),@(2),@(3),@(4),@(5)])
+    [self.matching addObject:obj];
+  
+  for (id obj in @[@"0",@"1",@"2",@"3",@"4",@"5"])
+    [self.subject addObject:obj];
+
+  STAssertEqualObjects(@(15),
+                       self.matching.SH_collectionSum, nil);
+  STAssertEqualObjects(@(15),
+                       self.subject.SH_collectionSum, nil);
+  
+}
+
+-(void)testMax; {
+  [self.subject removeAllObjects];
+  
+  for (id obj in @[@(0),@(1),@(2),@(3),@(4),@(5)])
+    [self.matching addObject:obj];
+  
+  for (id obj in @[@"0",@"1",@"2",@"3",@"4",@"5"])
+    [self.subject addObject:obj];
+  
+  STAssertEqualObjects(@"5", self.subject.SH_collectionMax, nil);
+  STAssertEqualObjects(@(5), self.matching.SH_collectionMax, nil);
+  
+}
+
+-(void)testMin; {
+  [self.subject removeAllObjects];
+  
+  for (id obj in @[@(0),@(1),@(2),@(3),@(4),@(5)])
+    [self.matching addObject:obj];
+  
+  for (id obj in @[@"0",@"1",@"2",@"3",@"4",@"5"])
+    [self.subject addObject:obj];
+  
+  STAssertEqualObjects(@"0", self.subject.SH_collectionMin, nil);
+  STAssertEqualObjects(@(0), self.matching.SH_collectionMin, nil);
+}
+
 
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>

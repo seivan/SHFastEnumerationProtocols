@@ -290,6 +290,31 @@ SHTestsFastEnumerationProperties
   [self assertHashTableWithMapTable:self.subject.SH_toHashTableStrong];
 }
 
+
+-(void)testAvg; {
+  self.subject =  @{@"key1" : @(1) , @"key2" : @(3)};
+  STAssertEqualObjects(self.subject.SH_collectionAvg, @(2), nil);
+  
+}
+
+-(void)testSum; {
+  self.subject =  @{@"key1" : @(1) , @"key2" : @(3)};
+  STAssertEqualObjects(self.subject.SH_collectionSum, @(4), nil);
+  
+}
+
+-(void)testMax; {
+  self.subject =  @{@"key1" : @(1) , @"key2" : @(3)};
+  STAssertEqualObjects(self.subject.SH_collectionMax, @(3), nil);
+  
+}
+
+-(void)testMin; {
+  self.subject =  @{@"key1" : @(1) , @"key2" : @(3)};
+  STAssertEqualObjects(self.subject.SH_collectionMin, @(1), nil);
+  
+}
+
 @end
 
 @implementation NSDictionaryTests (Mutable)

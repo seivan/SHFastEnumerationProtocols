@@ -13,6 +13,7 @@
 
 #pragma mark - <SHTestsFastEnumerationBlocks>
 @protocol SHTestsFastEnumerationBlocks <NSObject>
+@required
 -(void)testEach;
 -(void)testMap;
 -(void)testReduce;
@@ -26,6 +27,7 @@
 
 #pragma mark - <SHTestsFastEnumerationProperties>
 @protocol SHTestsFastEnumerationProperties <NSObject>
+@required
 -(void)testIsEmtpy;
 -(void)testToArray;
 -(void)testToSet;
@@ -37,26 +39,35 @@
 -(void)testToMapTableStrongToWeak;
 -(void)testToHashTableWeak;
 -(void)testToHashTableStrong;
+-(void)testAvg;
+-(void)testSum;
+-(void)testMax;
+-(void)testMin;
+
 @end
 
 #pragma mark - <SHTestsFastEnumerationOrderedBlocks>
 @protocol SHTestsFastEnumerationOrderedBlocks <NSObject>
+@required
 -(void)testEachWithIndex;
 @end
 
 #pragma mark - <SHTestsFastEnumerationOrderedProperties>
 @protocol SHTestsFastEnumerationOrderedProperties <NSObject>
+@required
 -(void)testFirstObject;
 -(void)testLastObject;
 @end
 
 #pragma mark - <SHTestsFastEnumerationOrdered>
 @protocol SHTestsFastEnumerationOrdered <NSObject>
+@required
 -(void)testReverse;
 @end
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
 @protocol SHTestsMutableFastEnumerationBlocks <NSObject>
+@required
 -(void)testModifyMap;
 -(void)testModifyFindAll;
 -(void)testModifyReject;
@@ -64,6 +75,7 @@
 
 #pragma mark - <SHTestsMutableFastEnumerationOrdered>
 @protocol SHTestsMutableFastEnumerationOrdered <NSObject>
+@required
 -(void)testModifyReverse;
 -(void)testPopObjectAtIndex;
 -(void)testPopFirstObject;
@@ -72,6 +84,7 @@
 
 #pragma mark - <SHTestsHelpers>
 @protocol SHTestsHelpers <NSObject>
+@required
 -(void)assertMapTableWithMapTable:(NSMapTable *)theMapTable;
 -(void)assertHashTableWithMapTable:(NSHashTable *)theHashTable;
 @end
