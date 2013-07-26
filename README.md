@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/PodFactory/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/PodFactory/SHFastEnumerationProtocols)
-
 SHFastEnumerationProtocols
 ==========
+[![Build Status](https://travis-ci.org/PodFactory/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/PodFactory/SHFastEnumerationProtocols)
+
 
 Overview
 --------
