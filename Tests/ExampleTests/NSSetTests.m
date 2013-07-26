@@ -293,8 +293,8 @@ SHTestsFastEnumerationProperties>
 }
 
 -(void)testMax; {
-  self.matching = [NSMutableOrderedSet orderedSetWithArray:@[@(0),@(1),@(2),@(3),@(4),@(5)]];
-  self.subject  = [NSOrderedSet orderedSetWithArray:@[@"0",@"1",@"2",@"3",@"4",@"5"]];
+  self.matching = [NSMutableSet setWithArray:@[@(0),@(1),@(2),@(3),@(4),@(5)]];
+  self.subject  = [NSSet setWithArray:@[@"0",@"1",@"2",@"3",@"4",@"5"]];
   
   STAssertEqualObjects([self.subject valueForKeyPath:@"@max.self"], self.subject.SH_collectionMax, nil);
   STAssertEqualObjects([self.matching valueForKeyPath:@"@max.self"], self.matching.SH_collectionMax, nil);
@@ -302,8 +302,8 @@ SHTestsFastEnumerationProperties>
 }
 
 -(void)testMin; {
-  self.matching = [NSMutableOrderedSet orderedSetWithArray:@[@(0),@(1),@(2),@(3),@(4),@(5)]];
-  self.subject  = [NSOrderedSet orderedSetWithArray:@[@"0",@"1",@"2",@"3",@"4",@"5"]];
+  self.matching = [NSMutableSet setWithArray:@[@(0),@(1),@(2),@(3),@(4),@(5)]];
+  self.subject  = [NSSet setWithArray:@[@"0",@"1",@"2",@"3",@"4",@"5"]];
   
   STAssertEqualObjects([self.subject valueForKeyPath:@"@min.self"], self.subject.SH_collectionMin, nil);
   STAssertEqualObjects([self.matching valueForKeyPath:@"@min.self"], self.matching.SH_collectionMin, nil);

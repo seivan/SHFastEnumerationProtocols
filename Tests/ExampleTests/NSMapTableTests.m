@@ -295,25 +295,34 @@ SHTestsFastEnumerationProperties
 
 
 -(void)testAvg; {
-  self.matching = [NSMutableSet setWithArray:@[@(0),@(1),@(2),@(3),@(4),@(5)]];
-  self.subject  = [NSSet setWithArray:@[@"0",@"1",@"2",@"3",@"4",@"5"]];
-  STAssertEqualObjects([self.subject valueForKeyPath:@"@avg.self"],
-                       self.matching.SH_collectionAvg, nil);
+  [self.matching setObject:@"1" forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+  
+  STAssertEqualObjects(self.matching.SH_collectionAvg, @(2), nil);
+  
 }
 
 -(void)testSum; {
-  self.matching = [NSMutableSet setWithArray:@[@(0),@(1),@(2),@(3),@(4),@(5)]];
-  self.subject  = [NSSet setWithArray:@[@"0",@"1",@"2",@"3",@"4",@"5"]];
-  STAssertEqualObjects([self.subject valueForKeyPath:@"@sum.self"],
-                       self.matching.SH_collectionSum, nil);
+  [self.matching setObject:@"1" forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+
+  STAssertEqualObjects(self.matching.SH_collectionSum, @(4), nil);
   
 }
 
 -(void)testMax; {
+  [self.matching setObject:@(1) forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+
+  STAssertEqualObjects(self.matching.SH_collectionMax, @(3), nil);
   
 }
 
 -(void)testMin; {
+  [self.matching setObject:@(1) forKey:@"key1"];
+  [self.matching setObject:@(3) forKey:@"key2"];
+
+  STAssertEqualObjects(self.matching.SH_collectionMin, @(1), nil);
   
 }
 

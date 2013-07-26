@@ -173,19 +173,23 @@
 }
 
 -(NSDecimalNumber *)SH_collectionAvg; {
-  return [SHCommonEnumerationOperation avgForEnumeration:self];
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation avgForEnumeration:values];
 }
 
 -(NSDecimalNumber  *) SH_collectionSum; {
-  return [SHCommonEnumerationOperation sumForEnumeration:self];
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation sumForEnumeration:values];
 }
 
 -(id)SH_collectionMax; {
-  return [SHCommonEnumerationOperation maxForEnumeration:self];
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation maxForEnumeration:values];
 }
 
 -(id)SH_collectionMin; {
-  return [SHCommonEnumerationOperation minForEnumeration:self];
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation minForEnumeration:values];
 }
 
 
