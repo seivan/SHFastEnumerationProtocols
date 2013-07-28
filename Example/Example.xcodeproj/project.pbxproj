@@ -25,16 +25,6 @@
 		D147EAD64893494F82C56796 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31338839035B47748125E9B3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		22A5DACE1793A30900AD6E43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 22A5DAA21793A30800AD6E43 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 22A5DAA91793A30800AD6E43;
-			remoteInfo = Example;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		22A5DAAA1793A30800AD6E43 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A5DAAD1793A30800AD6E43 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -208,7 +198,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				22A5DACF1793A30900AD6E43 /* PBXTargetDependency */,
 			);
 			name = ExampleTests;
 			productName = ExampleTests;
@@ -334,14 +323,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		22A5DACF1793A30900AD6E43 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 22A5DAA91793A30800AD6E43 /* Example */;
-			targetProxy = 22A5DACE1793A30900AD6E43 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		22A5DAB61793A30800AD6E43 /* InfoPlist.strings */ = {
