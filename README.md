@@ -19,6 +19,7 @@ Tested and ready.
 * NSMapTable
 
 TODO: NSIndexSet, NSMutableIndexSet and NSEnumerator. 
+TODO: Keyed protocols
 
 
 API
