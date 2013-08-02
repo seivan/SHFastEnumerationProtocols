@@ -1,6 +1,6 @@
 SHFastEnumerationProtocols
 ==========
-[![Build Status](https://travis-ci.org/PodFactory/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/PodFactory/SHFastEnumerationProtocols)
+[![Build Status](https://travis-ci.org/seivan/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/seivan/SHFastEnumerationProtocols)
 
 
 Overview
@@ -25,7 +25,7 @@ TODO: Keyed protocols
 API
 ----------
 
-#### [SHFastEnumerationProtocols](https://github.com/PodFactory/SHFastEnumerationProtocols#api-1)
+#### [SHFastEnumerationProtocols](https://github.com/seivan/SHFastEnumerationProtocols#api-1)
 
 
 
@@ -58,9 +58,10 @@ API
 ```objective-c
 
 #pragma mark - Block Definitions
+
 //obj is the key for keyed indexed classes (NSDictionary, NSMapTable)
 typedef void (^SHIteratorBlock)(id obj);
-typedef void (^SHIteratorWithIndexBlock)(id obj, NSUInteger index) ;
+typedef void (^SHIteratorWithIndexBlock)(id obj, NSInteger index) ;
 
 typedef id (^SHIteratorReturnIdBlock)(id obj);
 typedef id (^SHIteratorReduceBlock)(id memo, id obj);
@@ -144,7 +145,7 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 @protocol SHMutableFastEnumerationOrdered <NSObject>
 @required
 -(void)SH_modifyReverse;
--(id)SH_popObjectAtIndex:(NSUInteger)theIndex;
+-(id)SH_popObjectAtIndex:(NSInteger)theIndex;
 -(id)SH_popFirstObject;
 -(id)SH_popLastObject;
 @end
@@ -165,5 +166,5 @@ twitter: [@seivanheidari](https://twitter.com/seivanheidari)
 
 SHFastEnumerationProtocols is © 2013 [Seivan](http://www.github.com/seivan) and may be freely
 distributed under the [MIT license](http://opensource.org/licenses/MIT).
-See the [`LICENSE.md`](https://github.com/PodFactory/SHFastEnumerationProtocols/blob/master/LICENSE.md) file.
+See the [`LICENSE.md`](https://github.com/seivan/SHFastEnumerationProtocols/blob/master/LICENSE.md) file.
 

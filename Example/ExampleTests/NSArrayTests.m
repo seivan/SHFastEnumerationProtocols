@@ -92,7 +92,7 @@ SHTestsMutableFastEnumerationOrdered>
 }
 
 -(void)testFind;{
-  NSUInteger index = self.subject.count/2;
+  NSInteger index = self.subject.count/2;
   
   id value = [self.subject SH_find:^BOOL(id obj) {
     return [self.subject indexOfObject:obj] == index;
@@ -254,7 +254,7 @@ SHTestsMutableFastEnumerationOrdered>
   STAssertTrue([self.subject.SH_toDictionary isKindOfClass:[NSDictionary class]], nil);
   STAssertTrue(self.subject.SH_toDictionary.count > 0, nil);
   
-  [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
+  [self.subject SH_eachWithIndex:^(id obj, NSInteger index) {
     STAssertEqualObjects(self.subject[index], [self.subject.SH_toDictionary objectForKey:@(index)], nil);
   }];
 
@@ -324,7 +324,7 @@ SHTestsMutableFastEnumerationOrdered>
 #pragma mark - <SHTestsFastEnumerationOrderedBlocks>
 -(void)testEachWithIndex;{
   
-  [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
+  [self.subject SH_eachWithIndex:^(id obj, NSInteger index) {
     [self.matching addObject:@(index)];
   }];
   
@@ -378,7 +378,7 @@ SHTestsMutableFastEnumerationOrdered>
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
 -(void)testModifyMap; {
-  __block NSUInteger counter = 0;
+  __block NSInteger counter = 0;
   self.matching = self.subject.mutableCopy;
   [self.matching SH_modifyMap:^id(id obj) {
     counter +=1;
@@ -497,7 +497,7 @@ SHTestsMutableFastEnumerationOrdered>
   STAssertTrue(theMapTable.count > 0, nil);
   STAssertTrue(self.subject.count > 0, nil);
   
-  [self.subject SH_eachWithIndex:^(id obj, NSUInteger index) {
+  [self.subject SH_eachWithIndex:^(id obj, NSInteger index) {
     STAssertEqualObjects(self.subject[index], [theMapTable objectForKey:@(index)], nil);
   }];
 
