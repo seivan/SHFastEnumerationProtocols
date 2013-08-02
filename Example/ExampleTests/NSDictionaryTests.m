@@ -63,7 +63,7 @@ SHTestsFastEnumerationProperties
 }
 
 -(void)testMap;{
-  __block NSUInteger skipOne = 0;
+  __block NSInteger skipOne = 0;
   self.matching = [self.subject SH_map:^id(id obj) {
     skipOne += 1;
     if(skipOne == 1)
@@ -101,7 +101,7 @@ SHTestsFastEnumerationProperties
 }
 
 -(void)testFind;{
-  __block NSUInteger counter = 0;
+  __block NSInteger counter = 0;
   
   id value = [self.subject SH_find:^BOOL(id obj) {
     counter +=1;
@@ -109,13 +109,13 @@ SHTestsFastEnumerationProperties
   }];
   
   
-  STAssertEquals(self.subject.count, counter, nil);
+  STAssertEquals(self.subject.count, (NSUInteger)counter, nil);
   STAssertNotNil([self.subject objectForKey:value], nil);
   
 }
 
 -(void)testFindAll;{
-  __block NSUInteger counter = 0;
+  __block NSInteger counter = 0;
   
   self.matching = [self.subject SH_findAll:^BOOL(id obj) {
     counter +=1;
@@ -130,7 +130,7 @@ SHTestsFastEnumerationProperties
 }
 
 -(void)testReject;{
-  __block NSUInteger counter = 0;
+  __block NSInteger counter = 0;
   
   self.matching = [self.subject SH_reject:^BOOL(id obj) {
     counter +=1;
@@ -321,7 +321,7 @@ SHTestsFastEnumerationProperties
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
 -(void)testModifyMap; {
-  __block NSUInteger counter = 0;
+  __block NSInteger counter = 0;
   self.matching = self.subject.mutableCopy;
   [self.matching SH_modifyMap:^id(id obj) {
     counter +=1;
@@ -332,9 +332,9 @@ SHTestsFastEnumerationProperties
   }];
   
   
-  NSUInteger expectedCount = 1;
+  NSInteger expectedCount = 1;
   STAssertTrue(self.matching.count < self.subject.count, nil);
-  STAssertEquals(self.matching.count, expectedCount, nil);
+  STAssertEquals(self.matching.count, (NSUInteger)expectedCount, nil);
   
   for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);
   
@@ -343,7 +343,7 @@ SHTestsFastEnumerationProperties
 }
 
 -(void)testModifyFindAll; {
-  __block NSUInteger counter = 0;
+  __block NSInteger counter = 0;
   self.matching = self.subject.mutableCopy;
   [self.matching SH_modifyFindAll:^BOOL(id obj) {
     counter +=1;
@@ -354,9 +354,9 @@ SHTestsFastEnumerationProperties
   }];
   
   
-  NSUInteger expectedCount = 1;
+  NSInteger expectedCount = 1;
   STAssertTrue(self.matching.count < self.subject.count, nil);
-  STAssertEquals(self.matching.count, expectedCount, nil);
+  STAssertEquals(self.matching.count, (NSUInteger)expectedCount, nil);
   
   for (id obj in self.matching) STAssertNotNil([self.subject objectForKey:obj], nil);  
   
@@ -365,7 +365,7 @@ SHTestsFastEnumerationProperties
 
 -(void)testModifyReject; {
   
-  __block NSUInteger counter = 0;
+  __block NSInteger counter = 0;
   self.matching = self.subject.mutableCopy;
   [self.matching SH_modifyReject:^BOOL(id obj) {
     counter +=1;
@@ -376,7 +376,7 @@ SHTestsFastEnumerationProperties
   }];
   
   
-  NSUInteger expectedCount = 1;
+  NSInteger expectedCount = 1;
   STAssertTrue(self.matching.count < self.subject.count, nil);
   STAssertEquals(self.matching.count, self.subject.count-expectedCount, nil);
   

@@ -60,7 +60,7 @@
 
 -(id)SH_find:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
   id value = nil;
-	NSUInteger index = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) { return theBlock(obj); }];
+	NSInteger index = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) { return theBlock(obj); }];
 	
 	if (index != NSNotFound) value = self[index];
 	
@@ -228,7 +228,7 @@
 }
 
 
--(id)SH_popObjectAtIndex:(NSUInteger)theIndex; {
+-(id)SH_popObjectAtIndex:(NSInteger)theIndex; {
   id obj = [self objectAtIndex:theIndex];
   [self removeObjectAtIndex:theIndex];
   return obj;
@@ -255,7 +255,7 @@
 
 #pragma mark - Private
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable; {
-  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
+  [self SH_eachWithIndex:^(id obj, NSInteger index) {
     [theMapTable setObject:obj forKey:@(index)];
   }];
   return theMapTable;

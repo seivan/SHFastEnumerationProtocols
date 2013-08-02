@@ -30,27 +30,32 @@
 @implementation SHAppDelegate
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification;{
-  //NSArray * matching = @[@(0),@(1),@(2),@(3),@(4),@(5)];
-  NSHashTable * matching =  [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
+  NSArray * array = @[
+                      @{@"calories" : @(1)},
+                      @{@"calories" : @(11)},
+                      @{@"calories" : @(2)},
+                      @{@"calories" : @(22)},
+                      @{@"calories" : @(3)},
+                      @{@"calories" : @(33)},
+                      @{@"calories" : @(4)},
+                      @{@"calories" : @(5)}
+                      ];
   
-
-  for (id obj in @[@"asd",@(1),@(2),@(3),@(4),@(5)])
-    [matching addObject:obj];
-
-//  NSLog(@"%@", [@[@"asd",@(1),@(2),@(3),@(4),@(5)] valueForKeyPath:@"@avg.self"]);
-  @try {
-    NSLog(@"%@", [@[@"asd",@(1),@(2),@(3),@(4),@(5)] valueForKeyPath:@"@sum.self"]);
-  }
-  @catch (NSException *exception) {
-    NSLog(@"EXCEPTION: %@", exception);
-  }
-  @finally {
-    NSLog(@"FINALLLY");
-  }
+ NSDictionary * largest= [array SH_reduceValue:nil withBlock:^id(NSDictionary * memo, NSDictionary * obj) {
+   NSDictionary * largest = nil;
+   if(memo == nil) largest = obj;
+    else {
+      NSNumber * memoValue = memo[@"calories"];
+      NSNumber * objValue = obj[@"calories"];
+      if(memoValue.integerValue > objValue.integerValue) largest = memo;
+      else largest = obj;
+    }
+   return largest;
+  }];
   
-//  NSLog(@"%@ ---- %@", [matching valueForKeyPath:@"@avg.self"], matching.SH_collectionAvg);
+  NSAssert([(NSNumber *)largest[@"calories"] integerValue] == 33, nil);
   
-
+  
 }
 
 @end
