@@ -4,7 +4,6 @@ SHFastEnumerationProtocols
 [![Version](http://cocoapod-badges.herokuapp.com/v/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
 
-
 Overview
 --------
 NSFastEnumeration helpers and enumeration blocks through a protocol on foundation collection classes.
