@@ -4,6 +4,8 @@ SHFastEnumerationProtocols
 [![Version](http://cocoapod-badges.herokuapp.com/v/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
 
+> This pod is used by [`SHFoundationAdditions`](https://github.com/seivan/SHFoundationAdditions) as part of many components covering to plug the holes missing from Foundation, UIKit, CoreLocation, GameKit, MapKit and other aspects of an iOS application's architecture.
+
 Overview
 --------
 NSFastEnumeration helpers and enumeration blocks through a protocol on foundation collection classes.
@@ -19,7 +21,8 @@ Tested and ready.
 * NSDictionary and NSMutableDictionary 
 * NSMapTable
 
-TODO: NSIndexSet, NSMutableIndexSet and NSEnumerator. 
+TODO: NSIndexSet, NSMutableIndexSet and NSEnumerator.
+ 
 TODO: Keyed protocols
 
 
