@@ -12,16 +12,36 @@ typedef BOOL (^SHIteratorPredicateBlock)(id obj);
 #pragma mark - <SHFastEnumerationBlocks>
 @protocol SHFastEnumerationBlocks <NSObject>
 @required
+
+//obj is the key for keyed indexed classes (NSDictionary, NSMapTable)
 -(void)SH_each:(SHIteratorBlock)theBlock;
+
+//the loop is on HIGH queue, each iteration on BACKGROUND, completion callback is on main
 -(void)SH_concurrentEach:(SHIteratorBlock)theBlock onComplete:(SHIteratorBlock)theCompleteBlock;
--(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock; //Collect
--(id)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock; //Inject/FoldLeft
--(id)SH_find:(SHIteratorPredicateBlock)theBlock; //Match
--(instancetype)SH_findAll:(SHIteratorPredicateBlock)theBlock; //Select/Filter
--(instancetype)SH_reject:(SHIteratorPredicateBlock)theBlock; //!Select/Filter
--(BOOL)SH_all:(SHIteratorPredicateBlock)theBlock; //Every
--(BOOL)SH_any:(SHIteratorPredicateBlock)theBlock; //Some
--(BOOL)SH_none:(SHIteratorPredicateBlock)theBlock; // !Every
+
+//Collect
+-(instancetype)SH_map:(SHIteratorReturnIdBlock)theBlock;
+
+//Inject/FoldLeft
+-(id)SH_reduceValue:(id)theValue withBlock:(SHIteratorReduceBlock)theBlock;
+
+//Match
+-(id)SH_find:(SHIteratorPredicateBlock)theBlock;
+
+//Select/Filter
+-(instancetype)SH_findAll:(SHIteratorPredicateBlock)theBlock;
+
+//!Select/Filter
+-(instancetype)SH_reject:(SHIteratorPredicateBlock)theBlock;
+
+//Every
+-(BOOL)SH_all:(SHIteratorPredicateBlock)theBlock;
+
+//Some
+-(BOOL)SH_any:(SHIteratorPredicateBlock)theBlock;
+
+// !Every
+-(BOOL)SH_none:(SHIteratorPredicateBlock)theBlock;
 @end
 
 #pragma mark - <SHFastEnumerationProperties>
