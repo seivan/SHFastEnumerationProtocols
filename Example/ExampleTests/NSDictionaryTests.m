@@ -62,6 +62,24 @@ SHTestsFastEnumerationProperties
   
 }
 
+-(void)testConcurrentEach; {
+  __block BOOL didAssert = NO;
+  NSMutableArray * content = @[].mutableCopy;
+  [self SH_performAsyncTestsWithinBlock:^(BOOL *didFinish) {
+    [self.subject SH_concurrentEach:^(id obj) {
+      [content addObject:obj];
+    } onComplete:^(id obj) {
+      STAssertEqualObjects(obj, self.subject, nil);
+      didAssert = YES;
+      *didFinish = YES;
+    }];
+  } withTimeout:5];
+  
+  STAssertTrue(didAssert, nil);
+  STAssertEquals(content.count, self.subject.count, nil);
+}
+
+
 -(void)testMap;{
   __block NSInteger skipOne = 0;
   self.matching = [self.subject SH_map:^id(id obj) {

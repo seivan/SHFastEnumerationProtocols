@@ -1,14 +1,19 @@
 PODS:
-  - SHFastEnumerationProtocols (1.0.0)
+  - SHFastEnumerationProtocols (1.2.0)
+  - SHTestCaseAdditions (1.1.0)
 
 DEPENDENCIES:
   - SHFastEnumerationProtocols (from `../`)
+  - SHTestCaseAdditions (from `https://github.com/seivan/SHTestCaseAdditions`)
 
 EXTERNAL SOURCES:
   SHFastEnumerationProtocols:
     :path: ../
+  SHTestCaseAdditions:
+    :git: https://github.com/seivan/SHTestCaseAdditions
 
 SPEC CHECKSUMS:
-  SHFastEnumerationProtocols: 0b9631ec8a8f6d49122d5f447dfb4404315c510a
+  SHFastEnumerationProtocols: 5dde0d343a6bf08bf43ec5db2e6dcd9505c50d06
+  SHTestCaseAdditions: 0c64108c62ba04b01cb7d237a4cf6acf1176af45
 
-COCOAPODS: 0.22.2
+COCOAPODS: 0.22.3

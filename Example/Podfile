@@ -1,1 +1,6 @@
 pod 'SHFastEnumerationProtocols', :path => '../'
+
+
+target :ExampleTests do
+  pod 'SHTestCaseAdditions', :git => "https://github.com/seivan/SHTestCaseAdditions"
+end
