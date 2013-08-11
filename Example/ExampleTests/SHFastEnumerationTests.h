@@ -7,7 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-
+#import "SHTestCaseAdditions.h"
 
 
 
@@ -15,6 +15,7 @@
 @protocol SHTestsFastEnumerationBlocks <NSObject>
 @required
 -(void)testEach;
+-(void)testConcurrentEach;
 -(void)testMap;
 -(void)testReduce;
 -(void)testFind;
