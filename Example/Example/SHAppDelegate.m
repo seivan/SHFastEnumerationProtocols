@@ -40,41 +40,20 @@
                       @{@"calories" : @(4)},
                       @{@"calories" : @(5)}
                       ];
-  
-  for (int i = 0; i != 500; i++) {
-    array = [array arrayByAddingObjectsFromArray:@[@(i)]];
-  }
-  
-  [array SH_concurrentEach:^(id obj) {
-    NSLog(@"%@", obj);
-  } onComplete:^(id obj) {
-    NSLog(@"Complete");
-  }];
 
-//  NSArray * array = @[
-//                      @{@"calories" : @(1)},
-//                      @{@"calories" : @(11)},
-//                      @{@"calories" : @(2)},
-//                      @{@"calories" : @(22)},
-//                      @{@"calories" : @(3)},
-//                      @{@"calories" : @(33)},
-//                      @{@"calories" : @(4)},
-//                      @{@"calories" : @(5)}
-//                      ];
-//
-// NSDictionary * largest= [array SH_reduceValue:nil withBlock:^id(NSDictionary * memo, NSDictionary * obj) {
-//   NSDictionary * largest = nil;
-//   if(memo == nil) largest = obj;
-//    else {
-//      NSNumber * memoValue = memo[@"calories"];
-//      NSNumber * objValue = obj[@"calories"];
-//      if(memoValue.integerValue > objValue.integerValue) largest = memo;
-//      else largest = obj;
-//    }
-//   return largest;
-//  }];
-//  
-//  NSAssert([(NSNumber *)largest[@"calories"] integerValue] == 33, nil);
+ NSDictionary * largest= [array SH_reduceValue:nil withBlock:^id(NSDictionary * memo, NSDictionary * obj) {
+   NSDictionary * largest = nil;
+   if(memo == nil) largest = obj;
+    else {
+      NSNumber * memoValue = memo[@"calories"];
+      NSNumber * objValue = obj[@"calories"];
+      if(memoValue.integerValue > objValue.integerValue) largest = memo;
+      else largest = obj;
+    }
+   return largest;
+  }];
+  
+  NSAssert([(NSNumber *)largest[@"calories"] integerValue] == 33, nil);
   
   
 }
