@@ -1,10 +1,11 @@
 SHFastEnumerationProtocols
 ==========
+
 [![Build Status](https://travis-ci.org/seivan/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/seivan/SHFastEnumerationProtocols)
 [![Version](https://cocoapod-badges.herokuapp.com/v/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
 
-> This pod is used by [`SHFoundationAdditions`](https://github.com/seivan/SHFoundationAdditions) as part of many components covering to plug the holes missing from Foundation, UIKit, CoreLocation, GameKit, MapKit and other aspects of an iOS application's architecture.
+> This pod is used by [`SHFoundationAdditions`](https://github.com/seivan/SHFoundationAdditions) as as an addition on top of Foundation. 
 
 Overview
 --------
