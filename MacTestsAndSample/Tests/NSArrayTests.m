@@ -234,11 +234,11 @@ SHTestsMutableFastEnumerationOrdered>
 }
 
 #pragma mark - <SHTestsFastEnumerationProperties>
--(void)testIsEmtpy; {
-  XCTAssertFalse(self.subject.SH_isEmpty);
-  XCTAssertTrue(self.matching.SH_isEmpty);
+-(void)testHasObjects; {
+  XCTAssertFalse(self.subject.SH_hasObjects);
+  XCTAssertTrue(self.matching.SH_hasObjects);
   BOOL isEmpty = self.matching.count == 0;
-  XCTAssertEqual(isEmpty, self.matching.SH_isEmpty);
+  XCTAssertEqual(isEmpty, self.matching.SH_hasObjects);
 }
 -(void)testToArray; {
   self.matching = self.subject.SH_toArray.copy;

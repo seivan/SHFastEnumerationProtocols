@@ -109,8 +109,8 @@
 }
 
 #pragma mark - <SHFastEnumerationProperties>
--(BOOL)SH_isEmpty; {
-  return self.count == 0;
+-(BOOL)SH_hasObjects; {
+  return self.count > 0;
 }
 
 -(NSArray *)SH_toArray; {
