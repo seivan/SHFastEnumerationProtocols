@@ -29,7 +29,7 @@
 #pragma mark - <SHTestsFastEnumerationProperties>
 @protocol SHTestsFastEnumerationProperties <NSObject>
 @required
--(void)testIsEmtpy;
+-(void)testHasObjects;
 -(void)testToArray;
 -(void)testToSet;
 -(void)testToOrderedSet;

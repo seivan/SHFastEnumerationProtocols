@@ -96,7 +96,7 @@ SHTestsMutableFastEnumerationBlocks
   
   
   XCTAssertTrue(self.matching.count < self.subject.count);
-  XCTAssertFalse(self.matching.SH_isEmpty);
+  XCTAssertTrue(self.matching.SH_hasObjects);
   
   for (id obj in self.matching)
     XCTAssertTrue([self.subject containsObject:obj]);
@@ -226,11 +226,11 @@ SHTestsMutableFastEnumerationBlocks
 }
 
 #pragma mark - <SHTestsFastEnumerationProperties>
--(void)testIsEmtpy; {
-  XCTAssertFalse(self.subject.SH_isEmpty);
-  XCTAssertTrue(self.matching.SH_isEmpty);
+-(void)testHasObjects; {
+  XCTAssertTrue(self.subject.SH_hasObjects);
+  XCTAssertFalse(self.matching.SH_hasObjects);
   BOOL isEmpty = self.matching.count == 0;
-  XCTAssertEqual(isEmpty, self.matching.SH_isEmpty);
+  XCTAssertNotEqual(isEmpty, self.matching.SH_hasObjects);
 }
 
 -(void)testToArray; {
