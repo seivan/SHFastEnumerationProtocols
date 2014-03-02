@@ -110,7 +110,7 @@ typedef BOOL (^SHIteratorPredicateBlock)(id obj);
 #pragma mark - <SHFastEnumerationProperties>
 @protocol SHFastEnumerationProperties <NSObject>
 @required
-@property(nonatomic,readonly) BOOL           SH_isEmpty;
+@property(nonatomic,readonly) BOOL           SH_hasObjects;
 
 @property(nonatomic,readonly) NSArray      * SH_toArray;
 @property(nonatomic,readonly) NSSet        * SH_toSet;
