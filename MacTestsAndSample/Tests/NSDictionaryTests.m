@@ -96,7 +96,7 @@ SHTestsFastEnumerationProperties
   
   
   XCTAssertTrue(self.matching.count < self.subject.count);
-  XCTAssertFalse(self.matching.SH_hasObjects);
+  XCTAssertTrue(self.matching.SH_hasObjects);
   
   for (id obj in self.matching) XCTAssertNotNil([self.subject objectForKey:obj]);
   

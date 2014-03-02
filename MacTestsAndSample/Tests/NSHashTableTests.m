@@ -96,7 +96,7 @@ SHTestsMutableFastEnumerationBlocks
   
   
   XCTAssertTrue(self.matching.count < self.subject.count);
-  XCTAssertFalse(self.matching.SH_hasObjects);
+  XCTAssertTrue(self.matching.SH_hasObjects);
   
   for (id obj in self.matching)
     XCTAssertTrue([self.subject containsObject:obj]);
