@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
   s.name         = name
-  version        = "1.6.0"
+  version        = "1.6.1"
   source_files   = "#{name}/**/*.{h,m}"
 
   s.version      = version
@@ -37,6 +37,7 @@ TODO: NSIndexSet, NSMutableIndexSet and NSEnumerator.
 
   s.source_files = source_files
   s.requires_arc = true
+  s.social_media_url = 'https://twitter.com/seivanheidari'
 
 
 end
