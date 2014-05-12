@@ -87,7 +87,7 @@
 
 -(instancetype)SH_findAll:(SHIteratorPredicateBlock)theBlock; { NSParameterAssert(theBlock);
   return [self objectsAtIndexes:
-          [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger _, BOOL *__) {
+          [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger _, BOOL __unused *stop_) {
 		return theBlock(obj);
 	}]];
 }
@@ -187,10 +187,11 @@
 
 -(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock; { NSParameterAssert(theBlock);
   
-  [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *_) {
+  [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL __unused *stop) {
     theBlock(obj,idx);
   }];
 }
+
 
 
 #pragma mark - <SHFastEnumerationOrderedProperties>
@@ -210,8 +211,31 @@
   return self.reverseObjectEnumerator.allObjects;
 }
 
+-(id)SH_objectBeforeObject:(id)theObject; {
+  id otherObject = nil;
+  if([self containsObject:theObject]) {
+    NSNumber * objectIndex = @([self indexOfObject:theObject]);
+    NSInteger otherObjectIndex = objectIndex.integerValue-1;
+    if(otherObjectIndex >= 0)  otherObject = self[otherObjectIndex];
+  }
+  return otherObject;
+}
+
+
+-(id)SH_objectAfterObject:(id)theObject; {
+  id otherObject = nil;
+  if([self containsObject:theObject]) {
+    NSNumber * objectIndex = @([self indexOfObject:theObject]);
+    NSInteger otherObjectIndex = objectIndex.integerValue+1;
+    if(otherObjectIndex < self.count)  otherObject = self[otherObjectIndex];
+  }
+  return otherObject;
+}
+
+
 @end
 
+#pragma mark - Mutable
 @implementation NSMutableArray (SHFastEnumerationProtocols)
 
 

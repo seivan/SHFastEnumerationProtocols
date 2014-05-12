@@ -153,6 +153,8 @@ typedef BOOL (^SHIteratorPredicateBlock)(id obj);
 @protocol SHFastEnumerationOrdered <NSObject>
 @required
 -(instancetype)SH_reverse;
+-(id)SH_objectBeforeObject:(id)theObject;
+-(id)SH_objectAfterObject:(id)theObject;
 @end
 
 

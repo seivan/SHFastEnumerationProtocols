@@ -64,6 +64,9 @@
 @protocol SHTestsFastEnumerationOrdered <NSObject>
 @required
 -(void)testReverse;
+-(void)testObjectBeforeObject;
+-(void)testObjectAfterObject;
+
 @end
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>

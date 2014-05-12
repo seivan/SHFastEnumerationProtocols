@@ -54,7 +54,7 @@ typedef BOOL (^SHIteratorPredicateBlock)(id obj);
 @property(nonatomic,readonly) NSOrderedSet * SH_toOrderedSet;
 
 //The objects are the values while the key will either be an NSNumber index (from ordered)
-//or a counted key (unordereD)
+//or a counted key (unordered)
 @property(nonatomic,readonly) NSDictionary * SH_toDictionary;
 @property(nonatomic,readonly) NSMapTable   * SH_toMapTableWeakToWeak;
 @property(nonatomic,readonly) NSMapTable   * SH_toMapTableWeakToStrong;
@@ -90,6 +90,9 @@ typedef BOOL (^SHIteratorPredicateBlock)(id obj);
 @protocol SHFastEnumerationOrdered <NSObject>
 @required
 -(instancetype)SH_reverse;
+-(id)SH_objectBeforeObject:(id)theObject;
+-(id)SH_objectAfterObject:(id)theObject;
+
 @end
 
 

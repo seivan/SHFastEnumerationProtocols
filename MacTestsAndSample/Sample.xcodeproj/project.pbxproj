@@ -227,7 +227,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SH;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Seivan;
 			};
 			buildConfigurationList = 22FFA1A318605D8400E8B22C /* Build configuration list for PBXProject "Sample" */;
@@ -487,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3ECF04C976C94451BAE3C091 /* Pods-Tests.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -507,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3ECF04C976C94451BAE3C091 /* Pods-Tests.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
