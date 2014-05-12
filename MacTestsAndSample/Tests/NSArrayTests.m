@@ -260,7 +260,7 @@ SHTestsMutableFastEnumerationOrdered>
   XCTAssertTrue([self.subject.SH_toOrderedSet  isKindOfClass:[NSOrderedSet class]]);
   XCTAssertTrue(self.subject.SH_toOrderedSet.count > 0);
   
-  [self.subject.SH_toOrderedSet enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *_) {
+  [self.subject.SH_toOrderedSet enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL __unused *stop) {
     XCTAssertEqualObjects(obj, self.subject[idx]);
   }];
     
@@ -355,6 +355,8 @@ SHTestsMutableFastEnumerationOrdered>
 }
 
 
+
+
 #pragma mark - <SHTestsFastEnumerationOrderedProperties>
 -(void)testFirstObject; {
   self.matching = self.subject.mutableCopy;
@@ -392,6 +394,34 @@ SHTestsMutableFastEnumerationOrdered>
 
   
 }
+
+-(void)testObjectBeforeObject; {
+  self.matching = self.subject.mutableCopy;
+  id object = self.matching.lastObject;
+  NSUInteger indexOfObject = @([self.matching indexOfObject:object]).integerValue;
+  id otherObject  = self.matching[indexOfObject-1];
+  
+  XCTAssertNotNil(otherObject);
+  XCTAssertEqualObjects(otherObject, [self.matching SH_objectBeforeObject:object]);
+  [self.matching removeAllObjects];
+  XCTAssertNoThrow([self.matching SH_objectBeforeObject:otherObject]);
+  XCTAssertNil([self.matching SH_objectBeforeObject:otherObject]);
+}
+
+-(void)testObjectAfterObject; {
+  self.matching = self.subject.mutableCopy;
+  id object = self.matching.firstObject;
+  NSUInteger indexOfObject = @([self.matching indexOfObject:object]).integerValue;
+  id otherObject  = self.matching[indexOfObject+1];
+  
+  XCTAssertNotNil(otherObject);
+  XCTAssertEqualObjects(otherObject, [self.matching SH_objectAfterObject:object]);
+  [self.matching removeAllObjects];
+  XCTAssertNoThrow([self.matching SH_objectAfterObject:otherObject]);
+  XCTAssertNil([self.matching SH_objectAfterObject:otherObject]);
+  
+}
+
 
 #pragma mark - <SHTestsMutableFastEnumerationBlocks>
 -(void)testModifyMap; {

@@ -254,7 +254,7 @@ SHTestsMutableFastEnumerationBlocks
   XCTAssertTrue([self.subject.SH_toOrderedSet  isKindOfClass:[NSOrderedSet class]]);
   XCTAssertTrue(self.subject.SH_toOrderedSet.count > 0);
   
-  [self.subject.SH_toOrderedSet enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *_) {
+  [self.subject.SH_toOrderedSet enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL __unused *stop) {
     XCTAssertTrue([self.subject containsObject:obj]);
   }];
   
