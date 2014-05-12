@@ -76,8 +76,6 @@ typedef BOOL (^SHIteratorPredicateBlock)(id obj);
 @protocol SHFastEnumerationOrderedBlocks <NSObject>
 @required
 -(void)SH_eachWithIndex:(SHIteratorWithIndexBlock)theBlock;
--(id)SH_objectBeforeObject:(id)theObject;
--(id)SH_objectAfterObject:(id)theObject;
 @end
 
 #pragma mark - <SHFastEnumerationOrderedProperties>
@@ -92,6 +90,9 @@ typedef BOOL (^SHIteratorPredicateBlock)(id obj);
 @protocol SHFastEnumerationOrdered <NSObject>
 @required
 -(instancetype)SH_reverse;
+-(id)SH_objectBeforeObject:(id)theObject;
+-(id)SH_objectAfterObject:(id)theObject;
+
 @end
 
 
