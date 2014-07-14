@@ -1,9 +1,11 @@
 SHFastEnumerationProtocols
 ==========
 
-[![Build Status](https://travis-ci.org/seivan/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/seivan/SHFastEnumerationProtocols)
-[![Version](https://cocoapod-badges.herokuapp.com/v/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
-[![Platform](https://cocoapod-badges.herokuapp.com/p/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
+[![CI Status](https://img.shields.io/travis/seivan/SHFastEnumerationProtocols.svg?style=flat)](https://travis-ci.org/seivan/SHFastEnumerationProtocols)
+[![Version](https://img.shields.io/cocoapods/v/SHFastEnumerationProtocols.svg?style=flat)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
+[![Platform](https://img.shields.io/cocoapods/p/SHFastEnumerationProtocols.svg?style=flat)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
+[![License](https://img.shields.io/cocoapods/l/SHFastEnumerationProtocols.svg?style=flat)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols)
+
 
 > This pod is used by [`SHFoundationAdditions`](https://github.com/seivan/SHFoundationAdditions) as part of several components improving Foundation, UIKit, CoreLocation, GameKit, MapKit and other aspects of an iOS application's architecture.
 
